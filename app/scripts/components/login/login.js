@@ -6,14 +6,6 @@ export default {
       socket:null
     }
   },
-  computed:{
-    ...mapState({
-         
-    })
-  },
-  beforeMount(){
-     
-  },
   methods:{
      login(){
         this.$store.dispatch("loginModule/login",{account:'465559733@qq.com',password:'1111qqqq'}).then(res=>{
