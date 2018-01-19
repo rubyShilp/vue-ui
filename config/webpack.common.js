@@ -69,7 +69,7 @@ module.exports={
     plugins:[
         new webpack.ProgressPlugin(),
         new webpack.HotModuleReplacementPlugin(),
-        new ExtractTextPlugin('[name].bundle.css'),
+        new ExtractTextPlugin('[name].bundle[hash:7].css'),
         new webpack.ProvidePlugin({
             $: 'jquery',
             jQuery: 'jquery',
@@ -77,7 +77,7 @@ module.exports={
         }),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'main',
-            filename:"main.bundle.js"
+            filename:"main.bundle[hash:7].js"
         }),
         new HtmlWebpackPlugin({ 
             template: './index.html',
