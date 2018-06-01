@@ -1,16 +1,17 @@
 import {mapState} from 'vuex';
-import SockJS from 'sockjs-client';
+import loading from './../../util/components/loading.js';
 export default {
+  components:{
+    'fa-loading':loading
+  },
   data(){
     return {
-      socket:null
+        startDate:''
     }
   },
   methods:{
-     login(){
-        this.$store.dispatch("loginModule/login",{account:'465559733@qq.com',password:'1111qqqq'}).then(res=>{
-          //sessionStorage.setItem('TOKEN',res.data.token);
-        })
-     }
+    clickAll(){
+      this.$message('那么')
+    }
   }
 }

@@ -2,6 +2,9 @@ let webpack = require('webpack');
 let path = require('path');
 let ExtractTextPlugin = require("extract-text-webpack-plugin");
 let HtmlWebpackPlugin = require('html-webpack-plugin');
+function resolve (dir) {
+    return path.join(__dirname, '..', dir)
+}
 module.exports={
     entry:{
         'main': ['./scripts/main.js','./scripts/polyfill.js']
@@ -16,7 +19,8 @@ module.exports={
             'vue':path.resolve(process.cwd(), './node_modules/vue/dist/vue.min.js'),
             'vue-router':path.resolve(process.cwd(), './node_modules/vue-router/dist/vue-router.min.js'),
             'vuex':path.resolve(process.cwd(), './node_modules/vuex/dist/vuex.min.js'),
-            'md5':path.resolve(process.cwd(), './node_modules/md5/md5.js')
+            'md5':path.resolve(process.cwd(), './node_modules/md5/md5.js'),
+            '@': resolve('app'),
         },
         extensions: ['.vue','.js','.css']
     },
@@ -69,7 +73,7 @@ module.exports={
     plugins:[
         new webpack.ProgressPlugin(),
         new webpack.HotModuleReplacementPlugin(),
-        new ExtractTextPlugin('[name].bundle.css'),
+        new ExtractTextPlugin('[name].bundle[hash:7].css'),
         new webpack.ProvidePlugin({
             $: 'jquery',
             jQuery: 'jquery',
@@ -77,7 +81,7 @@ module.exports={
         }),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'main',
-            filename:"main.bundle.js"
+            filename:"main.bundle[hash:7].js"
         }),
         new HtmlWebpackPlugin({ 
             template: './index.html',
