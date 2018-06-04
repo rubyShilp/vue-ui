@@ -1,13 +1,11 @@
 let webpack = require('webpack');
 let path = require('path');
+const { VueLoaderPlugin } = require('vue-loader')
 let ExtractTextPlugin = require("extract-text-webpack-plugin");
 let HtmlWebpackPlugin = require('html-webpack-plugin');
-function resolve (dir) {
-    return path.join(__dirname, '..', dir)
-}
 module.exports={
     entry:{
-        'main': ['./scripts/main.js','./scripts/polyfill.js']
+        'main': ['babel-polyfill','./scripts/main.js','./scripts/polyfill.js']
     },
     context: path.join(process.cwd(), 'app'),
     resolve:{
@@ -19,8 +17,7 @@ module.exports={
             'vue':path.resolve(process.cwd(), './node_modules/vue/dist/vue.min.js'),
             'vue-router':path.resolve(process.cwd(), './node_modules/vue-router/dist/vue-router.min.js'),
             'vuex':path.resolve(process.cwd(), './node_modules/vuex/dist/vuex.min.js'),
-            'md5':path.resolve(process.cwd(), './node_modules/md5/md5.js'),
-            '@': resolve('app'),
+            'md5':path.resolve(process.cwd(), './node_modules/md5/md5.js')
         },
         extensions: ['.vue','.js','.css']
     },
@@ -41,53 +38,63 @@ module.exports={
             },
             {
                 test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico|swf)$/,
-                use: 'url-loader'
+                use: 'url-loader?limit=10000&name=images/[name].[ext]?[hash]'
             },
             {
-                test: /\.less$/,
-                loader: ExtractTextPlugin.extract({
+            test: /\.less$/,
+            use: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
-                    use: [{loader:'css-loader'},{loader:'less-loader'}]
-                })
-            },
-            {
-                test: /\.css$/,
-                include: path.resolve(process.cwd(), 'app', 'scripts'),
-                loaders: ['to-string-loader', 'css-loader']
-            },
-            {
-                test: /\.css$/,
-                exclude: path.resolve(process.cwd(), 'app', 'scripts'),
-                loader: ExtractTextPlugin.extract({
-                    fallback: 'style-loader',
-                    use: [{
+                    use: [
+                        {
                             loader:'css-loader',
                             options:{
                                 minimize: true //css压缩
                             }
-                        }]
+                        },'less-loader'],
+                    allChunks: true
                 })
-            }
+            },
+            {
+                test: /\.css$/,
+                use:ExtractTextPlugin.extract({
+                  fallback: "style-loader",
+                  use: [
+                    {
+                      loader: 'css-loader',
+                      options:{
+                          minimize: true //css压缩
+                      }
+                    }
+                  ]
+                })
+            },
         ]
     },
+    optimization:{
+        splitChunks:{
+            chunks: "all", 
+            cacheGroups:{
+                vendor:{
+                    chunks:'all',
+                    test:"/node_modules\/(.*)\.js/",
+                    name:'vendor'
+                }
+            }
+        }
+    },
     plugins:[
+        new VueLoaderPlugin(),
         new webpack.ProgressPlugin(),
         new webpack.HotModuleReplacementPlugin(),
         new ExtractTextPlugin('[name].bundle[hash:7].css'),
-        new webpack.ProvidePlugin({
-            $: 'jquery',
-            jQuery: 'jquery',
-            'window.jQuery':'jquery'
-        }),
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'main',
-            filename:"main.bundle[hash:7].js"
-        }),
         new HtmlWebpackPlugin({ 
             template: './index.html',
             favicon: './favicon.ico',
-            chunks:['main'],
-            minimize: true
+            filename:'index.html',
+            hash:true,//防止缓存
+            minify:{
+                removeAttributeQuotes:true//压缩 去掉引号
+            }
         })
     ]
 }
