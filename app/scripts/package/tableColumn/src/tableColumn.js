@@ -7,6 +7,14 @@ export default {
         lable:{
             type:String,
             default:''
-        }
+        },
+        value:{
+            type:String,
+            default:''
+        },
+        row:{
+            type:JSON,
+            default:{}
+        },
     }
 }

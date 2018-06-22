@@ -4,3 +4,10 @@ import {formDate} from './../util/core';
 Vue.filter('Date',function(value,format){
     return formDate(new Date(value),format);
 });
+Vue.filter('sexName',function(value){
+    if(value==1){
+        return '男';
+    }else{
+        return '女';
+    }
+})

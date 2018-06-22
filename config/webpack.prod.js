@@ -6,7 +6,7 @@ var uglifyjsPlugin=require('uglifyjs-webpack-plugin');
 module.exports = webpackMerge(commonConfig, {
     output:{
         path: path.join(process.cwd(), 'dist'),
-        publicPath: '/case/',    
+        publicPath: '/',    
         filename: '[name].bundle[hash:7].js',
         chunkFilename: '[name].bundle[hash:7].js',
         libraryTarget: 'umd',

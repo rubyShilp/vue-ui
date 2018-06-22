@@ -15,7 +15,7 @@ export default {
             default: undefined
         },
     },
-    beforeMount(){
+    mounted(){
         let heads=Object.assign({
           }, {header: slotsToHeaderProps(this.$slots.default)},this.options);
           for(let i=0;i<heads.header.length;i++){
