@@ -2,6 +2,6 @@
   "presets": [
     ["env","stage-2"]
   ],
-  "plugins": ["transform-object-rest-spread","transform-runtime"],
+  "plugins": ["transform-object-rest-spread","transform-runtime","transform-vue-jsx"],
   "comments": false
 }

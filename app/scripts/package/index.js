@@ -1,13 +1,11 @@
 import Message from './message/index.js';
-import faTable from './table/index.js';
-import faTableCell from './tableCell/index.js';
-import faTableColumn from './tableColumn/index.js';
+import faTable from './table/table.js';
+import faTableColumn from './table/index.js';
 import faCityPicker from './cityPicker/index.js';
 import faDatePicker from './datePicker/index.js';
 import faPage from './page/index.js';
 const components={
     faTable,
-    faTableCell,
     faTableColumn,
     faCityPicker,
     faDatePicker,
@@ -27,7 +25,6 @@ module.exports={
     version:'1.0.1',
     install,
     faTable,
-    faTableCell,
     faTableColumn,
     faCityPicker,
     faDatePicker,
