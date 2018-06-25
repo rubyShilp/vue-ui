@@ -1,6 +1,11 @@
-import './src/style/index.less';
-import faTableColumn from './src/components/table-column.vue';
-faTableColumn.install=function(Vue) {
-    Vue.component('faTableColumn', faTableColumn);
+import './style/checkbox.css';
+import './style/tag.css';
+import './style/table-column.css';
+import './style/table.css';
+import faTable from './src/table';
+/* istanbul ignore next */
+faTable.install = function(Vue) {
+  Vue.component(faTable.name, faTable);
 };
-export default faTableColumn;
+
+export default faTable;

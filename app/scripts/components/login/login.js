@@ -21,6 +21,9 @@ export default {
   methods:{
     clickAll(){
       this.$message('那么')
+    },
+    handleSelectChange(row){
+      console.log(row);
     }
   }
 }
