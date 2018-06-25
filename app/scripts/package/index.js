@@ -1,3 +1,4 @@
+import './directives/core.js';
 import Message from './message/index.js';
 import faTag from './tag/index.js';
 import faCheckbox from './checkbox/index.js';

@@ -7,6 +7,7 @@ export default {
   data(){
     return {
         startDate:'',
+        file:'',
         dataMessage:[
           {name:'张三',sex:1,age:12,email:'465525@qq.com'},
           {name:'李四',sex:1,age:12,email:'465525@qq.com'},
@@ -24,6 +25,11 @@ export default {
     },
     handleSelectChange(row){
       console.log(row);
+    },
+    //拖放上传文件
+    obtainFile(val){
+      this.file=val.file;
+      console.log(this.file);
     }
   }
 }
