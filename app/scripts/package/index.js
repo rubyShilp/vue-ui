@@ -1,3 +1,7 @@
+import './styles/checkbox.css';
+import './styles/table-column.css';
+import './styles/table.css';
+import './styles/tag.css';
 import './directives/core.js';
 import Message from './message/index.js';
 import faTag from './tag/index.js';

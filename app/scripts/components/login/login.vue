@@ -7,14 +7,18 @@
     <fa-table :data='dataMessage' border @selection-change="handleSelectChange">
         <fa-table-column type="selection" width="55"></fa-table-column>
         <fa-table-column prop='name' label='姓名'></fa-table-column>
-        <fa-table-column prop='sex' label='性别'></fa-table-column>
-        <fa-table-column prop='age' label='年龄'></fa-table-column>
-        <fa-table-column label='邮箱'>
+        <fa-table-column prop='sex' label='性别'>
           <template slot-scope="scope">
-            <fa-tooltip :content="scope.row.email" placement="top-start">
+            <span>{{scope.row.sex | sexName}}</span>
+          </template>
+        </fa-table-column>
+        <fa-table-column prop='age' label='年龄'></fa-table-column>
+        <fa-table-column prop='email' label='邮箱'>
+          <!-- <template slot-scope="scope">
+            <fa-tooltip :content="scope.row.email" placement="bottom">
                 <fa-tag>{{scope.row.email}}</fa-tag>
             </fa-tooltip>
-          </template>
+          </template> -->
         </fa-table-column>
         <fa-table-column label='操作'>
           <template slot-scope="scope">
