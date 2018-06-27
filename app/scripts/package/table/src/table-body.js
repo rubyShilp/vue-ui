@@ -19,6 +19,7 @@ export default {
     store: {
       required: true
     },
+    tableCenter:Boolean,
     stripe: Boolean,
     context: {},
     rowClassName: [String, Function],
@@ -31,7 +32,7 @@ export default {
     const columnsHidden = this.columns.map((column, index) => this.isColumnHidden(index));
     return (
       <table
-        class="fa-table__body"
+        class={[{'fa-table__body':true,'fa-table-header-center':this.tableCenter}]}
         cellspacing="0"
         cellpadding="0"
         border="0">

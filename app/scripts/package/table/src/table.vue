@@ -23,6 +23,7 @@
         ref="tableHeader"
         :store="store"
         :border="border"
+        :tableCenter='tableCenter'
         :default-sort="defaultSort"
         :style="{
           width: layout.bodyWidth ? layout.bodyWidth + 'px' : ''
@@ -38,6 +39,7 @@
         :context="context"
         :store="store"
         :stripe="stripe"
+        :tableCenter='tableCenter'
         :row-class-name="rowClassName"
         :row-style="rowStyle"
         :highlight="highlightCurrentRow"
@@ -53,7 +55,7 @@
           width: bodyWidth
         }">
         <span class="fa-table__empty-text">
-          <slot name="empty">{{ emptyText || t('el.table.emptyText') }}</slot>
+          <slot name="empty">{{ emptyText || t('fa.table.emptyText') }}</slot>
         </span>
       </div>
       <div
@@ -72,7 +74,7 @@
       <table-footer
         :store="store"
         :border="border"
-        :sum-text="sumText || t('el.table.sumText')"
+        :sum-text="sumText || t('fa.table.sumText')"
         :summary-method="summaryMethod"
         :default-sort="defaultSort"
         :style="{
@@ -96,6 +98,7 @@
         <table-header
           ref="fixedTableHeader"
           fixed="left"
+          :tableCenter='tableCenter'
           :border="border"
           :store="store"
           :style="{
@@ -113,6 +116,7 @@
           fixed="left"
           :store="store"
           :stripe="stripe"
+          :tableCenter='tableCenter'
           :highlight="highlightCurrentRow"
           :row-class-name="rowClassName"
           :row-style="rowStyle"
@@ -135,7 +139,7 @@
         <table-footer
           fixed="left"
           :border="border"
-          :sum-text="sumText || t('el.table.sumText')"
+          :sum-text="sumText || t('fa.table.sumText')"
           :summary-method="summaryMethod"
           :store="store"
           :style="{
@@ -160,6 +164,7 @@
           ref="rightFixedTableHeader"
           fixed="right"
           :border="border"
+          :tableCenter='tableCenter'
           :store="store"
           :style="{
             width: layout.bodyWidth ? layout.bodyWidth + 'px' : ''
@@ -176,6 +181,7 @@
           fixed="right"
           :store="store"
           :stripe="stripe"
+          :tableCenter='tableCenter'
           :row-class-name="rowClassName"
           :row-style="rowStyle"
           :highlight="highlightCurrentRow"
@@ -192,7 +198,7 @@
         <table-footer
           fixed="right"
           :border="border"
-          :sum-text="sumText || t('el.table.sumText')"
+          :sum-text="sumText || t('fa.table.sumText')"
           :summary-method="summaryMethod"
           :store="store"
           :style="{
@@ -243,7 +249,7 @@
           return [];
         }
       },
-
+      tableCenter:Boolean,
       size: String,
 
       width: [String, Number],

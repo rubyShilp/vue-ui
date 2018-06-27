@@ -7,6 +7,9 @@ export default {
   data(){
     return {
         startDate:'',
+        checked:true,
+        radio:1,
+        userName:12,
         file:'',
         dataMessage:[
           {name:'张三',sex:1,age:12,email:'465525@qq.com'},

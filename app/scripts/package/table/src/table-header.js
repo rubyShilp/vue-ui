@@ -76,7 +76,7 @@ export default {
     if (isGroup) this.$parent.isGroup = true;
     return (
       <table
-        class="fa-table__header"
+        class={[{'fa-table__header':true,'fa-table-header-center':this.tableCenter}]}
         cellspacing="0"
         cellpadding="0"
         border="0">
@@ -144,6 +144,7 @@ export default {
   },
 
   props: {
+    tableCenter:Boolean,
     fixed: String,
     store: {
       required: true

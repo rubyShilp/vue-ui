@@ -848,6 +848,12 @@
 	table-layout:fixed;
 	border-collapse:separate
 }
+.fa-table-header-center thead th{
+	text-align: center;
+}
+.fa-table-header-center tbody td{
+	text-align: center;
+}
 .fa-table__footer-wrapper,.fa-table__header-wrapper {
 	overflow:hidden
 }

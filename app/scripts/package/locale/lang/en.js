@@ -1,5 +1,5 @@
 export default {
-  el: {
+  fa: {
     colorpicker: {
       confirm: 'OK',
       clear: 'Clear'

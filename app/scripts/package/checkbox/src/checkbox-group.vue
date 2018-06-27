@@ -35,7 +35,7 @@
 
     watch: {
       value(value) {
-        this.dispatch('faFormItem', 'el.form.change', [value]);
+        this.dispatch('faFormItem', 'fa.form.change', [value]);
       }
     }
   };
