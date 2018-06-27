@@ -1,4 +1,4 @@
-import faTag from './src/tag';
+import faTag from './src/tag.vue';
 
 /* istanbul ignore next */
 faTag.install = function(Vue) {

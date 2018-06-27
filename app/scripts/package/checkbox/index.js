@@ -1,4 +1,4 @@
-import faCheckbox from './src/checkbox';
+import faCheckbox from './src/checkbox.vue';
 
 /* istanbul ignore next */
 faCheckbox.install = function(Vue) {

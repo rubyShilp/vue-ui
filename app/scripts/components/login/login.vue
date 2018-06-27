@@ -19,7 +19,7 @@
                 <fa-tag>{{scope.row.email}}</fa-tag>
             </fa-tooltip>
           </template> -->
-        </fa-table-column>
+        </fa-table-column> 
         <fa-table-column label='操作'>
           <template slot-scope="scope">
             <a href="javaScript:;" @click="handleSelectChange(scope.row)">详情</a>
