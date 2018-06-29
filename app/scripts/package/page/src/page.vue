@@ -140,7 +140,7 @@ export default {
         setCurrent: function(current) {
             if (this.currentPageNo != current && current > 0 && current < this.page + 1) {
                 this.currentPageNo = current;
-                this.$emit('pagingQuery', this.currentPageNo);
+                this.$emit('chanage', this.currentPageNo);
             }
         }
     }

@@ -19,9 +19,17 @@
       </div>
     </fa-card>
   <br/>
-  <fa-input type='number' v-model="userName"></fa-input>{{userName}}
+  <fa-input type='text' v-model="userName" label='用户名' maxlength='10' width='200'></fa-input>{{userName}}
   <br/>
-    <fa-table :data='dataMessage' border tableCenter  @selection-change="handleSelectChange">
+  <fa-select v-model="selectName" label='案件状态'>
+    <fa-option label='张三' value='1'></fa-option>
+    <fa-option label='李四' value='2'></fa-option>
+    <fa-option label='王五' value='3'></fa-option>
+    <fa-option label='赵六' value='4'></fa-option>
+  </fa-select>
+  <br/>
+  <div style="width:800px;">
+    <fa-table :data='dataMessage' border tableCenter   @selection-change="handleSelectChange">
         <fa-table-column type="selection" width="55"></fa-table-column>
         <fa-table-column prop='name' label='姓名'></fa-table-column>
         <fa-table-column prop='sex' label='性别'>
@@ -30,7 +38,13 @@
           </template>
         </fa-table-column>
         <fa-table-column prop='age' label='年龄'></fa-table-column>
-        <fa-table-column prop='email' label='邮箱'></fa-table-column> 
+        <fa-table-column prop='email' label='邮箱'>
+          <template slot-scope="scope">
+            <fa-tooltip  :content="scope.row.email" placement="bottom" effect="light">
+              <span>{{scope.row.email}}</span>
+            </fa-tooltip>
+          </template>
+        </fa-table-column> 
         <fa-table-column label='操作'>
           <template slot-scope="scope">
             <a href="javaScript:;" @click="handleSelectChange(scope.row)">详情</a>
@@ -39,6 +53,7 @@
           </template>
         </fa-table-column>
     </fa-table>
+  </div>
     <!-- <fa-city-picker v-model="startDate"></fa-city-picker> -->
     <!--拖放上传文件-->
     <div style="width:500px;height:300px;" v-fa-file-drop='obtainFile'>
