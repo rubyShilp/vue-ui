@@ -3,7 +3,9 @@
     <img src="./../../../images/logo.png">
     <h1>hello VUE</h1>
     <button @click="clickAll()">点击</button>
-    <fa-date-picker v-model="startDate"></fa-date-picker>
+    </br>
+    <fa-date-picker label='开始时间' v-model="startDate"></fa-date-picker>
+    </br>
     <fa-checkbox v-model="checked">备选项</fa-checkbox>
     <br/>
     <fa-radio v-model="radio" :label="1">备选项</fa-radio>
@@ -19,7 +21,7 @@
       </div>
     </fa-card>
   <br/>
-  <fa-input type='text' v-model="userName" label='用户名' maxlength='10' width='200'></fa-input>
+  <fa-input type='text' v-model="userName" label='用户名' maxlength='10'></fa-input>
   <br/>
   <fa-select v-model="selectName" label='案件状态'>
     <fa-option label='张三' value='1'></fa-option>

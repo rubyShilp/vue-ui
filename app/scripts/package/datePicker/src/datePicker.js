@@ -3,6 +3,7 @@ export default {
     name:'faDatePicker',
     data() {
         return {
+            focus: false,
             showDate:false,//日历显示与隐藏
             dateYear: new Date().getFullYear(),//获取当前年份
             dateMonth: new Date().getMonth() + 1,//获取当前月份
@@ -36,11 +37,25 @@ export default {
         },
         placeholder:{
             type: String,
-            default:'选择日期'
+            default:''
         },
         readonly:{
             type: Boolean,
             default:false
+        },
+        label:'',
+        type:'text',
+        width:'',
+        disabled:Boolean,
+    },
+    computed:{ 
+        model:{
+            get() {
+                return this.value;
+            },
+            set(val) {
+                this.$emit('input', val);
+            }
         }
     },
     watch:{
@@ -69,6 +84,11 @@ export default {
         this.getYears(this.selectYearTemp-4);
     },
     methods: {
+        handleChange() {
+            this.$nextTick(() => {
+              this.$emit('change', this.model);
+            });
+        },
         //计算日历表
         dateCalendar(year, month) {
             //清空日期数组

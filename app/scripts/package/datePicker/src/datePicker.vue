@@ -1,7 +1,18 @@
 <template>
 <rili class="fddcase-form-rili">
-    <input type="text" ref='input' :readonly='readonly'  :value="value" :placeholder="placeholder" @click="togglePanel()">
-    <i class="fddcase-ico-rili" style="line-height:normal" @click="togglePanel()"></i>
+    <div class="fa-input" :style="{'width':width+'px'}" :class="{'fa-input__focus':focus,'has-label':label}">
+        <slot></slot>
+        <div class="fa-input-label" :class="{'float':!focus && !model}">{{label}}</div>
+        <div class="fa-text-field fa-input-content fa-select-position">
+            <input tabindex="0" :type='type' class="fa-text-field-input"  :placeholder="placeholder" v-model="model"
+            @focus="focus = true;togglePanel()" :readonly='readonly'
+            @blur="focus = false" @change="handleChange" :disabled="disabled">
+            <div>
+                <div class="fa-input-line"></div>
+                <div class="fa-input-focus-line " :class="{'focus':focus,'disabled':disabled}"></div>
+            </div>
+        </div>
+    </div>
     <div class="fddcase-form-rili-pop" v-if="showDate">
         <div class="rili-tit">
             <a href="javaScript:;" class="left" @click="monthYearUpDown(dateMonth-1,1)"><i class="fddcase-ico-left"></i></a>
@@ -186,6 +197,7 @@ input[type=text], input[type=password], select, textarea {
     background: white;
     .radius();
     .fddcase-shadow;
+    left:0;
     position: absolute;
     //top:28px;
     padding: 8px;
