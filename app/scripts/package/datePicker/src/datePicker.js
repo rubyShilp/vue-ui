@@ -1,4 +1,3 @@
-//import './rili.less';
 export default {
     name:'faDatePicker',
     data() {
@@ -51,7 +50,9 @@ export default {
     computed:{ 
         model:{
             get() {
-                return this.value;
+                if(this.value){
+                    return this.formDateTime(new Date(this.value),this.formDate);
+                }
             },
             set(val) {
                 this.$emit('input', val);

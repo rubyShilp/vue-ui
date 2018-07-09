@@ -6,7 +6,7 @@ export default {
   },
   data(){
     return {
-        startDate:'',
+        startDate:new Date(),
         checked:true,
         radio:1,
         userName:'',
