@@ -9,8 +9,8 @@ export default {
         startDate:'',
         checked:true,
         radio:1,
-        userName:'1',
-        selectName:"1",
+        userName:'',
+        selectName:0,
         file:'',
         countList:[],
         dataMessage:[

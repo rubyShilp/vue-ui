@@ -1,11 +1,11 @@
 <template>
 <div class="fa-input" :style="{'width':width+'px'}" :class="{'fa-input__focus':focus,'has-label':label}" v-if="type!=='textarea'">
     <div class="fa-input-label" :class="{'float':!focus && !model}">{{label}}</div>
-    <div class="fa-select fa-input-content" :class="{'is-open':!focus}">
+    <div class="fa-select fa-input-content fa-select-position" :class="{'is-open':!focus}">
         <div class="fa-select-content">
-            <input tabindex="0"  class="fa-select-input"  readonly  v-model="model"
-            @focus="focus = true" 
-            @blur="focus = false"  @change="handleChange" :disabled="disabled" />
+            <input tabindex="0"  class="fa-select-input" type="hidden"  v-model="model"/>
+            <input class="fa-select-input" @focus.stop="focus = true;showOptions=true"  readonly
+            @blur="focus = false;"  @change="handleChange" :disabled="disabled"  ref="values">
         </div>
         <div class="fa-select-action">
             <svg viewBox="0 0 24 24" class="fa-select-icon"><path d="M7 10l5 5 5-5z"></path></svg>
@@ -15,7 +15,7 @@
             <div class="fa-input-focus-line " :class="{'focus':focus,'disabled':disabled}"></div>
         </div>
     </div>
-    <div>
+    <div class="fa-select-option" v-if="showOptions">
         <ul>
             <slot></slot>
         </ul>
@@ -34,6 +34,7 @@ export default {
     data(){
         return{
             focus: false,
+            showOptions:false,
         }
     },
     created(){
@@ -49,23 +50,44 @@ export default {
             }
         }
     },
-    watch:{
-        model(){
-            console.log(123);
-        }
+    beforeMount(){
+        this.$on('handleOptionMessage',this.handleOptionMessage);
     },
     methods: {
+        //文本值改变
         handleChange() {
             this.$nextTick(() => {
-            this.$emit('change', this.model);
+                this.$emit('change', this.model);
             });
         },
-        handleQuerySelect(){
-            console.log(123);
-        },
+        //选择选项数据
         handleOptionSelect(options){
             this.model=options.value;
+            this.$refs.values.value=options.label;
+            this.showOptions=false;
+        },
+        //初始化选项值
+        handleOptionMessage(options){
+            if(this.model==options.value){
+                this.$refs.values.value=options.label;
+            }
+        },
+        //关闭选项框
+        optionClose(){
+            if(!this.$el.contains(event.target)){
+                this.showOptions=false;
+            }
         }
     },
+    mounted(){
+        //绑定事件
+        this.$nextTick(()=>{
+            window.addEventListener('click', this.optionClose);
+        })
+    },
+    beforeDestroy () {
+        //销毁并移除事件
+        window.removeEventListener('click', this.optionClose)
+    }
 }
 </script>

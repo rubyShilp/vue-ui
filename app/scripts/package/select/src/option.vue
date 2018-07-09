@@ -1,5 +1,5 @@
 <template>
-<li @click.stop="selectOptionClick">
+<li v-on:click.stop="selectOptionClick">
     <a href="javaScript:;">{{label}}</a>
 </li>
 </template>
@@ -14,10 +14,16 @@ export default {
         value:[String, Number],
         label: [String, Number],
     },
+    mounted(){
+        this.optionMessage();
+    },
     methods: {
-      selectOptionClick() {
-        this.dispatch('faSelect', 'handleOptionClick',{value:this.value,label:this.label});
-      },
+        selectOptionClick() {
+            this.dispatch('faSelect', 'handleOptionClick',{value:this.value,label:this.label});
+        },
+        optionMessage(){
+           this.dispatch('faSelect', 'handleOptionMessage',{value:this.value,label:this.label});
+        }
     }
 }
 </script>
