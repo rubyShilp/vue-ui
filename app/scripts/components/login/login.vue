@@ -28,32 +28,32 @@
     <fa-option label='赵六' value='4'></fa-option>
   </fa-select>
   <br/>
-  <div style="width:800px;">
-    <fa-table :data='dataMessage' border tableCenter   @selection-change="handleSelectChange">
-        <fa-table-column type="selection" width="55"></fa-table-column>
-        <fa-table-column prop='name' label='姓名'></fa-table-column>
-        <fa-table-column prop='sex' label='性别'>
-          <template slot-scope="scope">
-            <span>{{scope.row.sex | sexName}}</span>
-          </template>
-        </fa-table-column>
-        <fa-table-column prop='age' label='年龄'></fa-table-column>
-        <fa-table-column prop='email' label='邮箱'>
-          <template slot-scope="scope">
-            <fa-tooltip  :content="scope.row.email" placement="bottom" effect="light">
-              <span>{{scope.row.email}}</span>
-            </fa-tooltip>
-          </template>
-        </fa-table-column> 
-        <fa-table-column label='操作'>
-          <template slot-scope="scope">
-            <a href="javaScript:;" @click="handleSelectChange(scope.row)">详情</a>
-            <a href="javaScript:;" @click="handleSelectChange(scope.row)">签署</a>
-            <a href="javaScript:;" @click="handleSelectChange(scope.row)">审核</a>
-          </template>
-        </fa-table-column>
-    </fa-table>
-  </div>
+    <fa-scrollbar class="div_border aside_left">
+      <fa-table :data='dataMessage' border tableCenter   @selection-change="handleSelectChange">
+          <fa-table-column type="selection" width="55"></fa-table-column>
+          <fa-table-column prop='name' label='姓名'></fa-table-column>
+          <fa-table-column prop='sex' label='性别'>
+            <template slot-scope="scope">
+              <span>{{scope.row.sex | sexName}}</span>
+            </template>
+          </fa-table-column>
+          <fa-table-column prop='age' label='年龄'></fa-table-column>
+          <fa-table-column prop='email' label='邮箱'>
+            <template slot-scope="scope">
+              <fa-tooltip  :content="scope.row.email" placement="bottom" effect="light">
+                <span>{{scope.row.email}}</span>
+              </fa-tooltip>
+            </template>
+          </fa-table-column> 
+          <fa-table-column label='操作'>
+            <template slot-scope="scope">
+              <a href="javaScript:;" @click="handleSelectChange(scope.row)">详情</a>
+              <a href="javaScript:;" @click="handleSelectChange(scope.row)">签署</a>
+              <a href="javaScript:;" @click="handleSelectChange(scope.row)">审核</a>
+            </template>
+          </fa-table-column>
+      </fa-table>
+    </fa-scrollbar>
     <!-- <fa-city-picker v-model="startDate"></fa-city-picker> -->
     <!--拖放上传文件-->
     <div style="width:500px;height:300px;" v-fa-file-drop='obtainFile'>

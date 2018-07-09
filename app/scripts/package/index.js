@@ -16,6 +16,7 @@ import faTableColumn from './table-column/index.js';
 import faCityPicker from './cityPicker/index.js';
 import faDatePicker from './datePicker/index.js';
 import faPage from './page/index.js';
+import faScrollbar from './scrollbar/index.js';
 const components={
     faTag,
     faInput,
@@ -31,7 +32,8 @@ const components={
     faTableColumn,
     faCityPicker,
     faDatePicker,
-    faPage
+    faPage,
+    faScrollbar
 }
 const install = function(Vue, opts = {}) {
     for (const name in components) {
@@ -61,6 +63,7 @@ module.exports={
     faTableColumn,
     faCityPicker,
     faDatePicker,
-    faPage
+    faPage,
+    faScrollbar
 }
 module.exports.default = module.exports;

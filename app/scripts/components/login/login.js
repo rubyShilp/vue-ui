@@ -12,6 +12,7 @@ export default {
         userName:'1',
         selectName:"1",
         file:'',
+        countList:[],
         dataMessage:[
           {name:'张三',sex:1,age:12,email:'465525@qq.com'},
           {name:'李四',sex:1,age:12,email:'465525@qq.com'},
@@ -24,6 +25,9 @@ export default {
     }
   },
   beforeMount () {
+    for(let i=0;i<20;i++){
+      this.countList.push(i);
+    }
     // this.$loading(true);
     // setTimeout(()=>{
     //   this.$loading(false);
