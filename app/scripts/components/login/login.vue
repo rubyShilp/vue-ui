@@ -2,7 +2,7 @@
   <div class="center">
     <img src="./../../../images/logo.png">
     <h1>hello VUE</h1>
-    <button @click="clickAll()">点击</button>
+     <fa-button @click="clickAll(12)">点击</fa-button>
     </br>
     <fa-date-picker label='开始时间' v-model="startDate"></fa-date-picker>
     </br>
@@ -30,7 +30,9 @@
     <fa-option label='赵六' value='4'></fa-option>
   </fa-select>
   <br/>
-      <fa-table :data='dataMessage' border tableCenter height='200'   @selection-change="handleSelectChange">
+  <fa-upload>上传</fa-upload>
+  <br/>
+      <fa-table :data='dataMessage' border tableCenter  @selection-change="handleSelectChange">
           <fa-table-column type="selection" width="55"></fa-table-column>
           <fa-table-column prop='name' label='姓名'></fa-table-column>
           <fa-table-column prop='sex' label='性别'>

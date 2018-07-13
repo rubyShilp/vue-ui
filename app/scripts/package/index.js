@@ -17,6 +17,8 @@ import faCityPicker from './cityPicker/index.js';
 import faDatePicker from './datePicker/index.js';
 import faPage from './page/index.js';
 import faScrollbar from './scrollbar/index.js';
+import faButton from './button/index.js';
+import faUpload from './upload/index.js';
 const components={
     faTag,
     faInput,
@@ -33,7 +35,9 @@ const components={
     faCityPicker,
     faDatePicker,
     faPage,
-    faScrollbar
+    faScrollbar,
+    faButton,
+    faUpload
 }
 const install = function(Vue, opts = {}) {
     for (const name in components) {
@@ -64,6 +68,8 @@ module.exports={
     faCityPicker,
     faDatePicker,
     faPage,
-    faScrollbar
+    faScrollbar,
+    faButton,
+    faUpload
 }
 module.exports.default = module.exports;

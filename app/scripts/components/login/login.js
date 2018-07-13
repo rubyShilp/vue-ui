@@ -34,8 +34,8 @@ export default {
     // },2000)
   },
   methods:{
-    clickAll(){
-      this.$message('那么')
+    clickAll(val){
+      this.$message('那么'+val)
     },
     handleSelectChange(row){
       console.log(row);
