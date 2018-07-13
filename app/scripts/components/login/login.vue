@@ -28,6 +28,7 @@
     <fa-option label='李四' value='2'></fa-option>
     <fa-option label='王五' value='3'></fa-option>
     <fa-option label='赵六' value='4'></fa-option>
+    <fa-option label='杨幂' value='5'></fa-option>
   </fa-select>
   <br/>
   <fa-upload>上传</fa-upload>
