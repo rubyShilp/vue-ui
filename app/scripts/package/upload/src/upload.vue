@@ -3,7 +3,7 @@
     <slot></slot>
     <input type="file" v-fa-file='workFile' multiple @change="upload($event)"/>
     <ul>
-        <li v-for="(list,index) of fileList" :key="list">
+        <li v-for="list of fileList" :key="list">
             <label>{{list.fileName}}</label>
         </li>
     </ul>
