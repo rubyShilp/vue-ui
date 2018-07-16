@@ -4,16 +4,18 @@
         <slot></slot>
         <input type="file" v-fa-file='workFile' class="fa-input-file" multiple @change="upload($event)"/>
     </div>
-    <ul class="fa-upload-list">
-        <li v-for="(list,index) of fileList" :key="list">
-            <a href="javaScript:;"><i class=""></i>{{list.fileName}}</a>
-            <label>
-                <i class="fa-icon-show fa-icon-upload-success fa-icon-circle-check"></i>
-                <i class="fa-icon-hide fa-icon-download" @click="downloadFile(list)"></i>
-                <i class="fa-icon-hide fa-icon-close" @click="deleteFile(index)"></i>
-            </label>
-        </li>
-    </ul>
+    <fa-Scrollbar :style="{'width':'100%','height':fileListHeight+'px'}">
+        <ul class="fa-upload-list">
+            <li v-for="(list,index) of fileList" :key="list">
+                <a href="javaScript:;"><i class=""></i>{{list.fileName}}</a>
+                <label>
+                    <i class="fa-icon-show fa-icon-upload-success fa-icon-circle-check"></i>
+                    <i class="fa-icon-hide fa-icon-download" @click="downloadFile(list)"></i>
+                    <i class="fa-icon-hide fa-icon-close" @click="deleteFile(index)"></i>
+                </label>
+            </li>
+        </ul>
+    </fa-Scrollbar>
 </div>    
 </template>
 <script>
@@ -51,6 +53,10 @@ export default {
             type:Number,
             default:20
         },
+        fileListHeight:{
+            type:Number,
+            default:120
+        }
     },
     methods:{
         //上传附件

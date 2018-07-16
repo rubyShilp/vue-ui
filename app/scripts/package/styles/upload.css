@@ -34,6 +34,7 @@
     position: absolute;
     right: 5px;
     top: 0;
+    right:20px;
     line-height: inherit;
 }
 .fa-upload-list li:hover{
