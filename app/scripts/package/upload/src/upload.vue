@@ -7,7 +7,7 @@
     <fa-Scrollbar :style="{'width':'100%','height':fileListHeight+'px'}">
         <ul class="fa-upload-list">
             <li v-for="(list,index) of fileList" :key="list">
-                <a href="javaScript:;"><i class=""></i>{{list.fileName}}</a>
+                <a href="javaScript:;"><i class="fa-icon-document"></i>{{list.fileName}}</a>
                 <label>
                     <i class="fa-icon-show fa-icon-upload-success fa-icon-circle-check"></i>
                     <i class="fa-icon-hide fa-icon-download" @click="downloadFile(list)"></i>

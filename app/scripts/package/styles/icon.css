@@ -1,11 +1,12 @@
 @font-face {
-	font-family:fadada-icons;
-	src:url('./fonts/fadada-icons.woff') format("woff"),url('./fonts/fadada-icons.ttf') format("truetype");
+	font-family:'fadada-icons';
+	src:url('./fonts/fadada-icons.woff') format("woff"),
+		url('./fonts/fadada-icons.ttf') format("truetype");
 	font-weight:400;
 	font-style:normal
 }
 [class*=" fa-icon-"],[class^=fa-icon-] {
-	font-family:fadada-icons!important;
+	font-family:'fadada-icons'!important;
 	speak:none;
 	font-style:normal;
 	font-weight:400;
@@ -237,6 +238,31 @@
 .fa-icon--left {
 	margin-right:5px
 }
+.fa-icon-uploadicon:before { content: "\e719"; }
+
+.fa-icon-pdf:before { content: "\e740"; }
+
+.fa-icon-qianshu:before { content: "\e741"; }
+
+.fa-icon-icon_reply:before { content: "\e742"; }
+
+.fa-icon-jpeg:before { content: "\e743"; }
+
+.fa-icon-png:before { content: "\e744"; }
+
+.fa-icon-word:before { content: "\e745"; }
+
+.fa-icon-excel:before { content: "\e746"; }
+
+.fa-icon-guanli:before { content: "\e747"; }
+
+.fa-icon-lajitong:before { content: "\e748"; }
+
+.fa-icon-shenhe:before { content: "\e749"; }
+
+.fa-icon-tongji:before { content: "\e75e"; }
+
+.fa-icon-zhuye:before { content: "\e751"; }
 @-webkit-keyframes rotating {
 	0% {
 	-webkit-transform:rotateZ(0);
