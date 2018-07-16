@@ -12,6 +12,7 @@ export default {
         userName:'',
         selectName:0,
         file:'',
+        fileList:new Array(),
         countList:[],
         dataMessage:[
           {name:'张三',sex:1,age:12,email:'465525@qq.com'},
@@ -44,6 +45,14 @@ export default {
     obtainFile(val){
       this.file=val.file;
       console.log(this.file);
+    },
+    //上传附件
+    uploadFile(list){
+      this.fileList.push(list);
+    },
+    //删除附件
+    deleteFile(index){
+      this.fileList.splice(index,1);
     }
   }
 }

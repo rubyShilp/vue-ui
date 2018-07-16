@@ -1,10 +1,17 @@
 <template>
-<div>
-    <slot></slot>
-    <input type="file" v-fa-file='workFile' multiple @change="upload($event)"/>
-    <ul>
-        <li v-for="list of fileList" :key="list">
-            <label>{{list.fileName}}</label>
+<div :style="{'width':width+'px'}">
+    <div>
+        <slot></slot>
+        <input type="file" v-fa-file='workFile' class="fa-input-file" multiple @change="upload($event)"/>
+    </div>
+    <ul class="fa-upload-list">
+        <li v-for="(list,index) of fileList" :key="list">
+            <a href="javaScript:;"><i class=""></i>{{list.fileName}}</a>
+            <label>
+                <i class="fa-icon-show fa-icon-upload-success fa-icon-circle-check"></i>
+                <i class="fa-icon-hide fa-icon-download" @click="downloadFile(list)"></i>
+                <i class="fa-icon-hide fa-icon-close" @click="deleteFile(index)"></i>
+            </label>
         </li>
     </ul>
 </div>    
@@ -19,6 +26,11 @@ export default {
         }
     },
     props:{
+        //宽度
+        width:{
+            type:Number,
+            default:360
+        },
         //附件列表
         fileList:{
             type:Array,
@@ -48,10 +60,11 @@ export default {
                 this.workFile='';
             }else{
                 let suffix=this.workFile.name.substring(this.workFile.name.lastIndexOf('.'),this.workFile.name.length);
-                this.fileList.push({
+                let fileList={
                     suffix:suffix,
                     fileName:this.workFile.name
-                })
+                }
+                this.$emit('upload',fileList);
             }
         },
         //判断上传的附件
@@ -83,7 +96,16 @@ export default {
                 this.workFile='';
                 return false;
             }
+            this.workFile='';
             return files[0];
+        },
+        //删除上传的文件
+        deleteFile(index){
+            this.$emit('deleteFile',index);
+        },
+        //下载文件
+        downloadFile(list){
+            this.$emit('downloadFile',list); 
         }
     }
 }

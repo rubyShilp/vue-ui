@@ -31,7 +31,9 @@
     <fa-option label='杨幂' value='5'></fa-option>
   </fa-select>
   <br/>
-  <fa-upload>上传</fa-upload>
+  <fa-upload @upload='uploadFile' @deleteFile='deleteFile' :fileList='fileList'>
+    <fa-button>上传</fa-button>
+  </fa-upload>
   <br/>
       <fa-table :data='dataMessage' border tableCenter  @selection-change="handleSelectChange">
           <fa-table-column type="selection" width="55"></fa-table-column>

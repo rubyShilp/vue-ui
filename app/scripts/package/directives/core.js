@@ -32,8 +32,6 @@ Vue.directive('fa-file-drop',{
 })
 Vue.directive('fa-file',{
     update:(el,binding,vnode)=>{
-        if(binding.value===null || binding.value==='' || binding.value===undefined){
-            el.value='';
-        }
+        el.value='';
     }
 })
