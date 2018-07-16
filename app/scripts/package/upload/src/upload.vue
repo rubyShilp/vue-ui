@@ -7,7 +7,7 @@
     <fa-Scrollbar :style="{'width':'100%','height':fileListHeight+'px'}">
         <ul class="fa-upload-list">
             <li v-for="(list,index) of fileList" :key="list">
-                <a href="javaScript:;"><i class="fa-icon-document"></i>{{list.fileName}}</a>
+                <a href="javaScript:;"><i :class="list.icon"></i>{{list.fileName}}</a>
                 <label>
                     <i class="fa-icon-show fa-icon-upload-success fa-icon-circle-check"></i>
                     <i class="fa-icon-hide fa-icon-download" @click="downloadFile(list)"></i>
@@ -59,6 +59,16 @@ export default {
         }
     },
     methods:{
+        //根据文件类型显示不同的图标
+        findIcon(suffix){
+            let icon='';
+           if(suffix==='.xls' || suffix==='.xlsx') icon='fa-icon-excel';
+           if(suffix==='.doc' || suffix==='.docx') icon='fa-icon-word';
+           if(suffix==='.pdf') icon='fa-icon-pdf';
+           if(suffix==='.jpeg' || suffix==='.jpg') icon='fa-icon-jpeg';
+           if(suffix==='.png' || suffix==='.jpng') icon='fa-icon-png';
+           return  icon;
+        },
         //上传附件
         upload(e){
             this.workFile=this.fileUpload(e,this.size);
@@ -68,7 +78,8 @@ export default {
                 let suffix=this.workFile.name.substring(this.workFile.name.lastIndexOf('.'),this.workFile.name.length);
                 let fileList={
                     suffix:suffix,
-                    fileName:this.workFile.name
+                    fileName:this.workFile.name,
+                    icon:this.findIcon(suffix)
                 }
                 this.$emit('upload',fileList);
             }
