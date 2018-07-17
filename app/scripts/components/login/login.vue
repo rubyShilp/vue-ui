@@ -34,9 +34,15 @@
     <fa-option label='陈道明' value='8'></fa-option>
   </fa-select>
   <br/>
-  <fa-upload @upload='uploadFile' @deleteFile='deleteFile' :fileList='fileList'>
+  <fa-upload @upload='uploadFile'
+            @deleteFile='deleteFile'
+            @downloadFile='downloadFile' 
+            :percentage='percentage'
+            :fileList='fileList'>
     <fa-button>上传</fa-button>
   </fa-upload>
+  <br/>
+  <fa-progress :percentage='percentage'  :stroke-width='6' color='#67c23a'></fa-progress>
   <br/>
       <fa-table :data='dataMessage' border tableCenter  @selection-change="handleSelectChange">
           <fa-table-column type="selection" width="55"></fa-table-column>

@@ -1,6 +1,7 @@
 <template>
 <div :style="{'width':width+'px'}">
     <div class="fa-input-box">
+        <fa-progress v-if="showProgressHiddent" :text-inside='false' :percentage='percentage'  :stroke-width='6' color='#67c23a'></fa-progress>
         <slot></slot>
         <input type="file" v-fa-file='workFile' class="fa-input-file" multiple @change="upload($event)"/>
     </div>
@@ -23,6 +24,7 @@ export default {
     data(){
         return{
             workFile:"",
+            showProgressHiddent:false,
         }
     },
     props:{
@@ -51,9 +53,20 @@ export default {
             type:Number,
             default:20
         },
-        fileListHeight:{
+        //是否显示上传进度条
+        showProgress:{
+            type:Boolean,
+            default:false
+        },
+        //进度条百分比
+        percentage:{
             type:Number,
-            default:120
+            default:0
+        }
+    },
+    watch:{
+        fileList(){
+            this.showProgressHiddent=false;
         }
     },
     methods:{
@@ -84,6 +97,10 @@ export default {
         },
         //判断上传的附件
         fileUpload(e,size){
+            if(this.fileList.length==this.limit){
+                this.$message('最多只能上传'+this.limit+'个文件');
+                return;
+            }
             let files = e.target.files || e.dataTransfer.files;
             if(!files.length){
                 return false;
@@ -110,6 +127,9 @@ export default {
                 this.$message('文件大小不得小于0KB!');
                 this.workFile='';
                 return false;
+            }
+            if(this.showProgress){
+                this.showProgressHiddent=true;
             }
             this.workFile='';
             return files[0];

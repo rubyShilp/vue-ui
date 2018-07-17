@@ -7,6 +7,7 @@ export default {
   data(){
     return {
         startDate:new Date(),
+        percentage:0,//进度条百分比
         checked:true,
         radio:1,
         userName:'',
@@ -53,6 +54,10 @@ export default {
     //删除附件
     deleteFile(index){
       this.fileList.splice(index,1);
+    },
+    //下载文件
+    downloadFile(list){
+      console.log(list);
     }
   }
 }

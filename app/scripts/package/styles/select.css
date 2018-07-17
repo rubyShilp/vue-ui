@@ -31,3 +31,6 @@
 .fa-select-option li a:hover{
    background-color: #ecf5ff;
 }
+.fa-scrollbar__wrap {
+    overflow-x: hidden;
+}
