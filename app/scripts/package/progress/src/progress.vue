@@ -1,0 +1,50 @@
+<template>
+    
+</template>
+<script>
+export default {
+    name:'faProgress',
+    props:{
+        //进度条百分比
+        percentage:{
+            type:Number,
+            default:0
+        },
+        //进度条类型
+        type:{
+            type:String,
+            default:'line'
+        },
+        //进度条文字显示(只在type='line'使用)
+        textInside:{
+            type:Number,
+            default:false
+        },
+        //进度条宽度
+        strokeWidth:{
+            type:Number,
+            default:6
+        },
+        //进度条当前状态
+        status:{
+            type:String,
+            default:'success'
+        },
+        //进度条背景色
+        color:{
+            type:String,
+            default:''
+        },
+        //环形进度条画布宽度(只在type='circle'时使用)
+        width:{
+            type:Number,
+            default:126
+        },
+        //是否显示进度条文字内容
+        showText:{
+            type:Number,
+            default:true
+        }
+    }
+}
+</script>

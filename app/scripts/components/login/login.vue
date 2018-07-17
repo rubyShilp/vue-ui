@@ -29,6 +29,9 @@
     <fa-option label='王五' value='3'></fa-option>
     <fa-option label='赵六' value='4'></fa-option>
     <fa-option label='杨幂' value='5'></fa-option>
+    <fa-option label='赵丽颖' value='6'></fa-option>
+    <fa-option label='林志玲' value='7'></fa-option>
+    <fa-option label='陈道明' value='8'></fa-option>
   </fa-select>
   <br/>
   <fa-upload @upload='uploadFile' @deleteFile='deleteFile' :fileList='fileList'>

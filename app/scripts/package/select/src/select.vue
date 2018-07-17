@@ -15,11 +15,11 @@
             <div class="fa-input-focus-line " :class="{'focus':focus,'disabled':disabled}"></div>
         </div>
     </div>
-    <div class="fa-select-option" v-if="showOptions">
+    <fa-scrollbar class="fa-select-option" v-if="showOptions">
         <ul>
             <slot></slot>
         </ul>
-    </div>
+    </fa-scrollbar>
 </div>
 </template>
 <script>
