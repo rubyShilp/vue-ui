@@ -15,7 +15,7 @@
 	top:0;
 	left: 0;
     right:0;
-    padding-top: 45%;
+    padding-top: 30%;
 }
 .layerTipsBox{
     display: inline-block;

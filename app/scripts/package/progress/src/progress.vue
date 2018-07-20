@@ -20,6 +20,11 @@
 export default {
     name:'faProgress',
     props:{
+        //盒子宽度
+        lineWidth:{
+            type:Number,
+            default:360
+        },
         //进度条百分比
         percentage:{
             type:Number,

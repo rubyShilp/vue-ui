@@ -7,14 +7,13 @@ export default {
   data(){
     return {
         startDate:new Date(),
-        percentage:0,//进度条百分比
+        percentage:30,//进度条百分比
         checked:true,
         radio:1,
         userName:'',
         selectName:0,
         file:'',
         fileList:new Array(),
-        countList:[],
         dataMessage:[
           {name:'张三',sex:1,age:12,email:'465525@qq.com'},
           {name:'李四',sex:1,age:12,email:'465525@qq.com'},
@@ -23,13 +22,49 @@ export default {
           {name:'赵丽颖',sex:0,age:12,email:'465525@qq.com'},
           {name:'林志玲',sex:0,age:12,email:'465525@qq.com'},
           {name:'杨幂',sex:0,age:12,email:'465525@qq.com'}
-        ]
+        ],
+        data: [{
+          label: '一级 1',
+          children: [{
+            label: '二级 1-1',
+            children: [{
+              label: '三级 1-1-1'
+            }]
+          }]
+        }, {
+          label: '一级 2',
+          children: [{
+            label: '二级 2-1',
+            children: [{
+              label: '三级 2-1-1'
+            }]
+          }, {
+            label: '二级 2-2',
+            children: [{
+              label: '三级 2-2-1'
+            }]
+          }]
+        }, {
+          label: '一级 3',
+          children: [{
+            label: '二级 3-1',
+            children: [{
+              label: '三级 3-1-1'
+            }]
+          }, {
+            label: '二级 3-2',
+            children: [{
+              label: '三级 3-2-1'
+            }]
+          }]
+        }],
+        defaultProps:{
+          children: 'children',
+          label: 'label'
+        }
     }
   },
   beforeMount () {
-    for(let i=0;i<20;i++){
-      this.countList.push(i);
-    }
     // this.$loading(true);
     // setTimeout(()=>{
     //   this.$loading(false);
@@ -58,6 +93,10 @@ export default {
     //下载文件
     downloadFile(list){
       console.log(list);
+    },
+    //树形菜单
+    handleNodeClick(data) {
+      console.log(data);
     }
   }
 }

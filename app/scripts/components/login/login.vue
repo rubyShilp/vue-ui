@@ -36,10 +36,10 @@
   <br/>
   <fa-upload @upload='uploadFile'
             @deleteFile='deleteFile'
-            @downloadFile='downloadFile' 
-            :percentage='percentage'
+            @downloadFile='downloadFile'
+            :limit='4'
             :fileList='fileList'>
-    <fa-button>上传</fa-button>
+    <fa-button><i class="fa-icon--left fa-icon-upload"></i>上传</fa-button>
   </fa-upload>
   <br/>
   <fa-progress :percentage='percentage'  :stroke-width='6' color='#67c23a'></fa-progress>
@@ -69,6 +69,8 @@
           </fa-table-column>
       </fa-table>
     <!-- <fa-city-picker v-model="startDate"></fa-city-picker> -->
+    <!--树形菜单-->
+    <fa-tree :data="data" :props="defaultProps" accordion @node-click="handleNodeClick" style="width:200px"></fa-tree>
     <!--拖放上传文件-->
     <div style="width:500px;height:300px;" v-fa-file-drop='obtainFile'>
       {{file?file.name:''}}

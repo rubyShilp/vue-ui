@@ -20,6 +20,7 @@ import faScrollbar from './scrollbar/index.js';
 import faButton from './button/index.js';
 import faUpload from './upload/index.js';
 import faProgress from './progress/index.js';
+import faTree from './tree/index.js';
 const components={
     faTag,
     faInput,
@@ -39,7 +40,8 @@ const components={
     faScrollbar,
     faButton,
     faUpload,
-    faProgress
+    faProgress,
+    faTree
 }
 const install = function(Vue, opts = {}) {
     for (const name in components) {
@@ -73,6 +75,7 @@ module.exports={
     faScrollbar,
     faButton,
     faUpload,
-    faProgress
+    faProgress,
+    faTree
 }
 module.exports.default = module.exports;

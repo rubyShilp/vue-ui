@@ -118,7 +118,3 @@ export function formDate(date,format){
 export function token(){
     return sessionStorage.getItem('TOKEN');
 }
-//开启socketIO
-export function socketIo(SockJS,url){
-    return new SockJS(url);
-}

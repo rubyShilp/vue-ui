@@ -1,8 +1,8 @@
 <template>
-<button tabindex="0" type="button" @click.stop='eventClick()' class="fa-button hover fa-raised-button fa-primary-color fa-inverse " style="user-select: none; outline: none; -webkit-appearance: none;">
+<button @click.stop='eventClick()' class="fa-button hover fa-raised-button fa-primary-color fa-inverse ">
     <div class="fa-button-wrapper">
         <div class="fa-ripple-wrapper"></div>
-    <slot></slot>
+        <slot></slot>
     </div>
 </button>
 </template>
