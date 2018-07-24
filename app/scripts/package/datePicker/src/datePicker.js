@@ -40,7 +40,7 @@ export default {
         },
         readonly:{
             type: Boolean,
-            default:false
+            default:true
         },
         label:'',
         type:'text',

@@ -52,6 +52,13 @@ export default {
     },
     beforeMount(){
         this.$on('handleOptionMessage',this.handleOptionMessage);
+        this.$nextTick(()=>{
+           for(let i=0;i<this.$slots.default.length;i++){
+                if(this.$slots.default[i].tag!==undefined){
+                   this.handleOptionMessage(this.$slots.default[i].componentOptions.propsData);
+                }
+            }
+        })
     },
     methods: {
         //文本值改变

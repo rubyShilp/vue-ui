@@ -11,7 +11,7 @@ export default {
         checked:true,
         radio:1,
         userName:'',
-        selectName:0,
+        selectName:2,
         file:'',
         fileList:new Array(),
         dataMessage:[

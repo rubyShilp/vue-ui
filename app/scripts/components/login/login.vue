@@ -4,7 +4,9 @@
     <h1>hello VUE</h1>
      <fa-button @click="clickAll(12)">点击</fa-button>
     </br>
-    <fa-date-picker label='开始时间' v-model="startDate"></fa-date-picker>
+    <fa-date-picker label='开始时间' v-model="startDate">
+      <i class="fa-icon-date" slot="left"></i>
+    </fa-date-picker>
     </br>
     <fa-checkbox v-model="checked">备选项</fa-checkbox>
     <br/>
