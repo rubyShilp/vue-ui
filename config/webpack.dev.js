@@ -1,8 +1,6 @@
-let webpackMerge = require('webpack-merge');
-let path = require('path');
-let fs=require('fs');
-let ExtractTextPlugin = require("extract-text-webpack-plugin");
-let commonConfig=require('./webpack.common');
+const webpackMerge = require('webpack-merge');
+const path = require('path');
+const commonConfig=require('./webpack.common');
 module.exports=webpackMerge(commonConfig,{
     output:{
         path: path.join(process.cwd(), 'dist'),
@@ -15,13 +13,23 @@ module.exports=webpackMerge(commonConfig,{
     devServer:{
         contentBase:path.join(process.cwd(), 'dist'),
         host:'127.0.0.1',
-        stats: 'minimal',
-        hot:true,
-        compress:true,
-        historyApiFallback:true,
+        hot: true,
+        historyApiFallback: true,
+        quiet: false,
+        noInfo: false,
+        stats: {
+            // Config for minimal console.log mess.
+            assets: false,
+            colors: true,
+            version: false,
+            hash: false,
+            timings: false,
+            chunks: false,
+            chunkModules: false
+        },
         proxy:[
             {
-                context:['/'],
+                context:['/user'],
                 target:'http://172.17.177.60:8084/',
                 changeOrigin:true,
                 secure:false
@@ -32,4 +40,3 @@ module.exports=webpackMerge(commonConfig,{
 //http://ci.fabigbig.com:8090/
 //http://192.168.189.9:8080/
 //http://172.17.177.60:8084/
-

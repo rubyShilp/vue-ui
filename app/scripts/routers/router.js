@@ -57,7 +57,7 @@ const routes=[...loginRouter
              ];
 // 创建router实例
 const router = new VueRouter({
-    mode:'hash',
+    mode:'history',
     base: __dirname,
     scrollBehavior,
     routes:routes,
