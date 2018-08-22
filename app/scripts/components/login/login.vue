@@ -4,7 +4,7 @@
     <h1>hello VUE</h1>
      <fa-button @click="clickAll(12)">点击</fa-button>
     </br>
-    <fa-date-picker label='开始时间' v-model="startDate">
+    <fa-date-picker label='开始时间' v-model="startDate" color='#fbb900'>
       <i class="fa-icon-date" slot="left"></i>
     </fa-date-picker>
     </br>
@@ -23,7 +23,9 @@
       </div>
     </fa-card>
   <br/>
-  <fa-input type='text' v-model="userName" label='用户名' maxlength='10'></fa-input>
+  <fa-input type='text' v-model="userName" label='用户名'  maxlength='500'>
+    <i class="fa-icon-search" slot="right"></i>
+  </fa-input>
   <br/>
   <fa-select v-model="selectName" label='案件状态'>
     <fa-option label='张三' value='1'></fa-option>
@@ -46,7 +48,7 @@
   <br/>
   <fa-progress :percentage='percentage'  :stroke-width='6' color='#67c23a'></fa-progress>
   <br/>
-      <fa-table :data='dataMessage' border tableCenter  @selection-change="handleSelectChange">
+      <fa-table :data='dataMessage' :header-cell-style="{background:'#ecf5ff'}" border tableCenter  cell-style="padding:7px" @selection-change="handleSelectChange">
           <fa-table-column type="selection" width="55"></fa-table-column>
           <fa-table-column prop='name' label='姓名'></fa-table-column>
           <fa-table-column prop='sex' label='性别'>

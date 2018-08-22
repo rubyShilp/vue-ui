@@ -46,6 +46,7 @@ export default {
         type:'text',
         width:'',
         disabled:Boolean,
+        color:'#3896ff',
     },
     computed:{ 
         model:{

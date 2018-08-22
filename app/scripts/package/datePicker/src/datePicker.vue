@@ -51,7 +51,7 @@
             </ol>
             <ul v-for="(day,index) of days" :key="day">
                 <li v-for="d of day" :key="d" @click="choiceDay(d)">
-                  <a href="javascript:;" :class="{'hover':dateYear===d.year && dateMonth===d.month&& dateDay===d.today,'disabled':(dateMonth-1)===d.month || (dateMonth+1)===d.month}">{{d.today}}</a>
+                  <a href="javascript:;" :style="{'background':(dateYear===d.year && dateMonth===d.month&& dateDay===d.today)?color:''}" :class="{'hover':dateYear===d.year && dateMonth===d.month&& dateDay===d.today,'disabled':(dateMonth-1)===d.month || (dateMonth+1)===d.month}">{{d.today}}</a>
                 </li>
             </ul>
         </div><!-- 日 -->
@@ -68,7 +68,7 @@
             </div>
         </div>
         <div class="rili-link" style="display:inherit" v-if="!showMonth && !showYear">
-            <a href="javaScript:;" class="fddcase-link" @click="selectDateTime()">确定</a>
+            <a href="javaScript:;" class="fddcase-link" :style="{'background-color':color}" @click="selectDateTime()">确定</a>
             <a href="javaScript:;" class="fddcase-a-666" @click="clearDateTime()">清除</a>
         </div>
     </div>
@@ -200,7 +200,7 @@ input[type=text], input[type=password], select, textarea {
     .fddcase-shadow;
     left:0;
     position: absolute;
-    //top:28px;
+    top:30px;
     padding: 8px;
     z-index: 10;
     box-sizing: border-box;

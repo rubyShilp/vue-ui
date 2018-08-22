@@ -21,6 +21,7 @@ import faButton from './button/index.js';
 import faUpload from './upload/index.js';
 import faProgress from './progress/index.js';
 import faTree from './tree/index.js';
+import faDocumentEdit from './documentEdit/index.js';
 const components={
     faTag,
     faInput,
@@ -41,7 +42,8 @@ const components={
     faButton,
     faUpload,
     faProgress,
-    faTree
+    faTree,
+    faDocumentEdit
 }
 const install = function(Vue, opts = {}) {
     for (const name in components) {
@@ -76,6 +78,7 @@ module.exports={
     faButton,
     faUpload,
     faProgress,
-    faTree
+    faTree,
+    faDocumentEdit
 }
 module.exports.default = module.exports;

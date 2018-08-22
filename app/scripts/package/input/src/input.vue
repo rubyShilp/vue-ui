@@ -1,12 +1,13 @@
 <template>
 <div>
     <div class="fa-input" :style="{'width':width+'px'}" :class="{'fa-input__focus':focus,'has-label':label}" v-if="type!=='textarea'">
-        <slot></slot>
         <div class="fa-input-label" :class="{'float':!focus && !model}">{{label}}</div>
-        <div class="fa-text-field fa-input-content">
+        <div class="fa-text-field fa-input-content fa-select-position">
+            <slot name="left"></slot>
             <input tabindex="0" :type='type' class="fa-text-field-input" :maxlength="maxlength" :placeholder="placeholder" v-model="model"
             @focus="focus = true" 
             @blur="focus = false" @change="handleChange" :disabled="disabled">
+            <slot name="right"></slot>
             <div>
                 <div class="fa-input-line"></div>
                 <div class="fa-input-focus-line " :class="{'focus':focus,'disabled':disabled}"></div>
