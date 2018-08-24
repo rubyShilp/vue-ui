@@ -19,9 +19,36 @@
         <button>操作</button>
       </div>
       <div>
-        1212
+        1212{{isVisible}}
       </div>
     </fa-card>
+  <br/>
+  <fa-dialog title="自定义标题" width='800' height='154' :visible='isVisible' @beforeClose='isVisible=false'>
+      <fa-table :data='dataMessage' :header-cell-style="{background:'#ecf5ff'}" border tableCenter  cell-style="padding:7px" @selection-change="handleSelectChange">
+          <fa-table-column type="selection" width="55"></fa-table-column>
+          <fa-table-column prop='name' label='姓名'></fa-table-column>
+          <fa-table-column prop='sex' label='性别'>
+            <template slot-scope="scope">
+              <span>{{scope.row.sex | sexName}}</span>
+            </template>
+          </fa-table-column>
+          <fa-table-column prop='age' label='年龄'></fa-table-column>
+          <fa-table-column prop='email' label='邮箱'>
+            <template slot-scope="scope">
+              <fa-tooltip  :content="scope.row.email" placement="bottom" effect="light">
+                <span>{{scope.row.email}}</span>
+              </fa-tooltip>
+            </template>
+          </fa-table-column> 
+          <fa-table-column label='操作'>
+            <template slot-scope="scope">
+              <a href="javaScript:;" @click="handleSelectChange(scope.row)">详情</a>
+              <a href="javaScript:;" @click="handleSelectChange(scope.row)">签署</a>
+              <a href="javaScript:;" @click="handleSelectChange(scope.row)">审核</a>
+            </template>
+          </fa-table-column>
+      </fa-table>
+  </fa-dialog>
   <br/>
   <fa-input type='text' v-model="userName" label='用户名'  maxlength='500'>
     <i class="fa-icon-search" slot="right"></i>

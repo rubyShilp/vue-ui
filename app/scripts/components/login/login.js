@@ -9,6 +9,7 @@ export default {
         startDate:new Date(),
         percentage:30,//进度条百分比
         checked:true,
+        isVisible:false,
         radio:1,
         userName:'',
         selectName:2,
@@ -72,7 +73,8 @@ export default {
   },
   methods:{
     clickAll(val){
-      this.$message('那么'+val)
+      this.isVisible=true;
+      //this.$message('那么'+val)
     },
     handleSelectChange(row){
       console.log(row);

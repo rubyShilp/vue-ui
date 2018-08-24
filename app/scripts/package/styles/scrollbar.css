@@ -9,7 +9,7 @@
 }
 .fa-scrollbar__wrap {
 	overflow:scroll;
-	height:100%
+	height:100%;
 }
 .fa-scrollbar__wrap--hidden-default::-webkit-scrollbar {
 	width:0;
