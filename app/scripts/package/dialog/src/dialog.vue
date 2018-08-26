@@ -5,6 +5,9 @@
             <a href="javascript:;" class="close-icon" @click="close()"><i class="fa-icon-close"></i></a>
             <fa-scrollbar class="com-pop-text" :style="{'height':(height>=154?(height-64):100)+'px'}">
                 <slot></slot>
+                <div class="fa-dialog-footer">
+                    <slot name='footer'></slot>
+                </div>
             </fa-scrollbar>
         </div>
     </div>  

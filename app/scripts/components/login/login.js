@@ -24,6 +24,11 @@ export default {
           {name:'林志玲',sex:0,age:12,email:'465525@qq.com'},
           {name:'杨幂',sex:0,age:12,email:'465525@qq.com'}
         ],
+        formLabelAlign: {
+          name: '',
+          region: '',
+          type: ''
+        },
         data: [{
           label: '一级 1',
           children: [{

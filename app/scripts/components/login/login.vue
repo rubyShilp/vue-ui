@@ -3,11 +3,11 @@
     <img src="./../../../images/logo.png">
     <h1>hello VUE</h1>
      <fa-button @click="clickAll(12)">点击</fa-button>
-    </br>
+    <br/>
     <fa-date-picker label='开始时间' v-model="startDate" color='#fbb900'>
       <i class="fa-icon-date" slot="left"></i>
     </fa-date-picker>
-    </br>
+    <br/>
     <fa-checkbox v-model="checked">备选项</fa-checkbox>
     <br/>
     <fa-radio v-model="radio" :label="1">备选项</fa-radio>
@@ -19,36 +19,28 @@
         <button>操作</button>
       </div>
       <div>
-        1212{{isVisible}}
+        1212
       </div>
     </fa-card>
   <br/>
-  <fa-dialog title="自定义标题" width='800' height='154' :visible='isVisible' @beforeClose='isVisible=false'>
-      <fa-table :data='dataMessage' :header-cell-style="{background:'#ecf5ff'}" border tableCenter  cell-style="padding:7px" @selection-change="handleSelectChange">
-          <fa-table-column type="selection" width="55"></fa-table-column>
-          <fa-table-column prop='name' label='姓名'></fa-table-column>
-          <fa-table-column prop='sex' label='性别'>
-            <template slot-scope="scope">
-              <span>{{scope.row.sex | sexName}}</span>
-            </template>
-          </fa-table-column>
-          <fa-table-column prop='age' label='年龄'></fa-table-column>
-          <fa-table-column prop='email' label='邮箱'>
-            <template slot-scope="scope">
-              <fa-tooltip  :content="scope.row.email" placement="bottom" effect="light">
-                <span>{{scope.row.email}}</span>
-              </fa-tooltip>
-            </template>
-          </fa-table-column> 
-          <fa-table-column label='操作'>
-            <template slot-scope="scope">
-              <a href="javaScript:;" @click="handleSelectChange(scope.row)">详情</a>
-              <a href="javaScript:;" @click="handleSelectChange(scope.row)">签署</a>
-              <a href="javaScript:;" @click="handleSelectChange(scope.row)">审核</a>
-            </template>
-          </fa-table-column>
-      </fa-table>
+  <fa-dialog title="自定义标题" width='550' height='400' :visible='isVisible' @beforeClose='isVisible=false'>
+      <fa-form label-position="right" label-width="80px" :model="formLabelAlign">
+        <fa-form-item label="名称">
+          <fa-input v-model="formLabelAlign.name" maxlength='20'></fa-input>
+        </fa-form-item>
+        <fa-form-item label="活动区域">
+          <fa-input v-model="formLabelAlign.region" maxlength='20'></fa-input>
+        </fa-form-item>
+        <fa-form-item label="活动形式">
+          <fa-input v-model="formLabelAlign.type" maxlength='20'></fa-input>
+        </fa-form-item>
+      </fa-form>
+      <div slot="footer">
+          <fa-button @click="clickAll(12)">点击</fa-button>
+          <fa-button @click="clickAll(12)">点击</fa-button>
+      </div>
   </fa-dialog>
+  <br/>
   <br/>
   <fa-input type='text' v-model="userName" label='用户名'  maxlength='500'>
     <i class="fa-icon-search" slot="right"></i>

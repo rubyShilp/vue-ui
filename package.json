@@ -9,6 +9,7 @@
   },
   "license": "ISC",
   "dependencies": {
+    "async-validator": "^1.8.5",
     "babel-core": "^6.25.0",
     "babel-loader": "^7.1.0",
     "babel-plugin-syntax-jsx": "^6.18.0",

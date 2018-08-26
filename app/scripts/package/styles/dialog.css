@@ -58,3 +58,9 @@
     color:#ccc;
     background-position: -109px -2px;
   }
+  .fa-dialog-footer{
+    padding: 20px;
+    padding-top: 10px;
+    text-align: right;
+    box-sizing: border-box;
+  }
