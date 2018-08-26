@@ -32,12 +32,12 @@
           <fa-input v-model="formLabelAlign.region" maxlength='20'></fa-input>
         </fa-form-item>
         <fa-form-item label="活动形式">
-          <fa-input v-model="formLabelAlign.type" maxlength='20'></fa-input>
+          <fa-input v-model="formLabelAlign.type"></fa-input>
         </fa-form-item>
       </fa-form>
       <div slot="footer">
-          <fa-button @click="clickAll(12)">点击</fa-button>
-          <fa-button @click="clickAll(12)">点击</fa-button>
+          <fa-button @click="clickAll(12)">确认</fa-button>
+          <fa-button @click="clickAll(12)">取消</fa-button>
       </div>
   </fa-dialog>
   <br/>
