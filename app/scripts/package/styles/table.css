@@ -246,10 +246,10 @@
 .fa-checkbox-button__inner:hover {
 	color:#409EFF
 }
-.fa-checkbox-button__inner [class*=el-icon-] {
+.fa-checkbox-button__inner [class*=fa-icon-] {
 	line-height:.9
 }
-.fa-checkbox-button__inner [class*=el-icon-]+span {
+.fa-checkbox-button__inner [class*=fa-icon-]+span {
 	margin-left:5px
 }
 .fa-checkbox-button__original {

@@ -3,6 +3,7 @@ import Message from './message/index.js';
 import Loading from './loading/index.js';
 import faInput from './input/index.js';
 import faSelect from './select/index.js';
+import faCascader from './cascader/index.js';
 import faOption from './option/index.js';
 import faTag from './tag/index.js';
 import faCard from './card/index.js';
@@ -29,6 +30,7 @@ const components={
     faTag,
     faInput,
     faSelect,
+    faCascader,
     faOption,
     faCard,
     faRadio,
@@ -67,6 +69,7 @@ module.exports={
     install,
     faInput,
     faSelect,
+    faCascader,
     faOption,
     faTag,
     faCard,

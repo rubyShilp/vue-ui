@@ -41,6 +41,7 @@
       </div>
   </fa-dialog>
   <br/>
+  <fa-cascader :options='options'  :showChecked='true'></fa-cascader>
   <br/>
   <fa-input type='text' v-model="userName" label='用户名'  maxlength='500'>
     <i class="fa-icon-search" slot="right"></i>
@@ -67,7 +68,7 @@
   <br/>
   <fa-progress :percentage='percentage'  :stroke-width='6' color='#67c23a'></fa-progress>
   <br/>
-      <fa-table :data='dataMessage' :header-cell-style="{background:'#ecf5ff'}" border tableCenter  cell-style="padding:7px" @selection-change="handleSelectChange">
+      <fa-table :data='dataMessage' tooltip-effect="light" :header-cell-style="{background:'#f7f8fa'}" border tableCenter  cell-style="padding:7px" @selection-change="handleSelectChange">
           <fa-table-column type="selection" width="55"></fa-table-column>
           <fa-table-column prop='name' label='姓名'></fa-table-column>
           <fa-table-column prop='sex' label='性别'>
@@ -76,13 +77,7 @@
             </template>
           </fa-table-column>
           <fa-table-column prop='age' label='年龄'></fa-table-column>
-          <fa-table-column prop='email' label='邮箱'>
-            <template slot-scope="scope">
-              <fa-tooltip  :content="scope.row.email" placement="bottom" effect="light">
-                <span>{{scope.row.email}}</span>
-              </fa-tooltip>
-            </template>
-          </fa-table-column> 
+          <fa-table-column prop='email' label='邮箱' :show-overflow-tooltip='true'></fa-table-column> 
           <fa-table-column label='操作'>
             <template slot-scope="scope">
               <a href="javaScript:;" @click="handleSelectChange(scope.row)">详情</a>

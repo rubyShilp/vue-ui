@@ -105,7 +105,7 @@ export default {
     if (!vnode) return vnode;
 
     const data = vnode.data = vnode.data || {};
-    data.staticClass = this.concatClass(data.staticClass, 'el-tooltip');
+    data.staticClass = this.concatClass(data.staticClass, 'fa-tooltip');
 
     return vnode;
   },

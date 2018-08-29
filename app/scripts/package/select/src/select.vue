@@ -5,7 +5,7 @@
         <div class="fa-select-content">
             <input tabindex="0"  class="fa-select-input" type="hidden"  v-model="model"/>
             <input class="fa-select-input" @focus.stop="focus = true;showOptions=true"  readonly
-            @blur="focus = false;"  @change="handleChange" :disabled="disabled"  ref="values">
+            @blur="focus = false;" :placeholder="placeholder"  @change="handleChange" :disabled="disabled"  ref="values">
         </div>
         <div class="fa-select-action">
             <svg viewBox="0 0 24 24" class="fa-select-icon"><path d="M7 10l5 5 5-5z"></path></svg>
@@ -15,7 +15,7 @@
             <div class="fa-input-focus-line " :class="{'focus':focus,'disabled':disabled}"></div>
         </div>
     </div>
-    <fa-scrollbar class="fa-select-option" v-if="showOptions">
+    <fa-scrollbar class="fa-select-option" :style="{'top':label?'58px':'38px'}" v-if="showOptions">
         <ul>
             <slot></slot>
         </ul>
@@ -30,6 +30,8 @@ export default {
         value: '',
         label:'',
         disabled: Boolean,
+        width:270,
+        placeholder:String,
     },
     data(){
         return{
