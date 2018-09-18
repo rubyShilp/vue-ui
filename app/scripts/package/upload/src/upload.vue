@@ -18,7 +18,6 @@
 </div>    
 </template>
 <script>
-import './../../directives/core.js';
 export default {
     name:'faUpload',
     data(){

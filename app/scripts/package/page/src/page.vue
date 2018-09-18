@@ -1,8 +1,17 @@
 <template>
     <div class="fddv3-list-page">
         <div class="fddv3-page-left">
-            当前第{{currentPageNo}}页，共{{page===0?1:page}}页，共{{totalCount}}条</div>
+            当前第{{currentPageNo}}页，共{{page===0?1:page}}页，共{{totalCount}}条
+        </div>        
         <div class="fddv3-page">
+            <a href="javaScript:;">
+                <select v-model="pageSize" v-if="pageSizes.length>0" class="page-size" @change="handleSizeChange()">
+                    <option v-for="size of pageSizes" :key="size" :value="size">{{size}}条/页</option>
+                </select>
+                <!-- <fa-select v-model="pageSize" width='90' v-if="pageSizes.length>0" @change="handleSizeChange()">
+                    <fa-option v-for="size of pageSizes" :key="size" :label='size+"条/页"' :value='size'></fa-option>
+                </fa-select> -->
+            </a>
             <a href="javaScript:;">
                 <span class="fddv3-icon-page-home" v-on:click="setCurrent(1)"></span>
             </a>
@@ -24,6 +33,12 @@
     background: #fff;
     margin: 30px 0;
     padding-bottom: 30px;
+}
+.fddv3-list-page .page-size{
+    border: 1px solid #ccc;
+    min-width: 70px;
+    width: auto;
+    height: 25px;
 }
 .fddv3-list-page .fddv3-page-left {
     float: left;
@@ -87,6 +102,10 @@ export default {
             type: Number,
             default: 10
         },
+        pageSizes:{           //可选每页条数
+            type:Array,
+            default:new Array()
+        },
         pagegroup: {        // 分页条数 -- 奇数
             type: Number,
             default: 5,
@@ -137,11 +156,16 @@ export default {
         }
     },
     methods: {
+        //分页
         setCurrent: function(current) {
             if (this.currentPageNo != current && current > 0 && current < this.page + 1) {
                 this.currentPageNo = current;
                 this.$emit('chanage', this.currentPageNo);
             }
+        },
+        //选择每页需要显示的条数,分页
+        handleSizeChange(){
+             this.$emit('sizeChanage',this.pageSize);
         }
     }
 }

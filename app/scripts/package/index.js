@@ -1,4 +1,5 @@
-import './styles/index.css';
+import './styles/index.less';
+import './directives/core.js';
 import Message from './message/index.js';
 import Loading from './loading/index.js';
 import faInput from './input/index.js';
@@ -25,6 +26,9 @@ import faTree from './tree/index.js';
 import faDocumentEdit from './documentEdit/index.js';
 import faForm from './form/index.js';
 import faFormItem from './form-item/index.js';
+import faDropdown from './dropdown/index.js';
+import faDropdownItem from './dropdownItem/index.js';
+import faDropdownMenu from './dropdownMenu/index.js';
 import faDialog from './dialog/index.js';
 const components={
     faTag,
@@ -51,6 +55,9 @@ const components={
     faDocumentEdit,
     faForm,
     faFormItem,
+    faDropdown,
+    faDropdownMenu,
+    faDropdownItem,
     faDialog
 }
 const install = function(Vue, opts = {}) {
@@ -91,6 +98,9 @@ module.exports={
     faDocumentEdit,
     faForm,
     faFormItem,
+    faDropdown,
+    faDropdownMenu,
+    faDropdownItem,
     faDialog
 }
 module.exports.default = module.exports;

@@ -168,6 +168,7 @@ export default {
     headerAlign: String,
     showTooltipWhenOverflow: Boolean,
     showOverflowTooltip: Boolean,
+    tooltipEffect:String,
     fixed: [Boolean, String],
     formatter: Function,
     selectable: Function,
@@ -298,9 +299,8 @@ export default {
       if (!renderCell) {
         renderCell = DEFAULT_RENDER_CELL;
       }
-
       return _self.showOverflowTooltip || _self.showTooltipWhenOverflow
-        ? <div class="cell fa-tooltip" style={ {width: (data.column.realWidth || data.column.width) - 1 + 'px'} }>{ renderCell(h, data) }</div>
+        ? <fa-tooltip rowIndex={data.$index}  tooltipEffect={_self.tooltipEffect} content={ renderCell(h, data) } style={ {width: (data.column.realWidth || data.column.width) - 1 + 'px'} }></fa-tooltip>
         : <div class="cell">{ renderCell(h, data) }</div>;
     };
   },

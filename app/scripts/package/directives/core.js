@@ -35,3 +35,26 @@ Vue.directive('fa-file',{
         el.value='';
     }
 })
+//签章拖动
+Vue.directive('fa-sign-drop',{
+    bind:(el, binding, vnode)=>{
+        Vue.nextTick(()=>{
+            let x=0,y=0,dragFlag=false;
+            el.onmousedown = (e)=>{
+                x = e.clientX - el.offsetLeft;
+                y = e.clientY - el.offsetTop;
+                dragFlag = true;
+            },
+            el.onmousemove=(e)=>{
+                if(dragFlag){
+                    el.style.left = e.clientX - x +'px';
+                    el.style.top = e.clientY - y +'px';
+                }
+            }
+            el.onmouseup=(e)=>{
+                dragFlag=false;
+            }
+        })
+        
+    }
+})

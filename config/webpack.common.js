@@ -19,7 +19,7 @@ module.exports={
             'vuex':path.resolve(process.cwd(), './node_modules/vuex/dist/vuex.min.js'),
             'md5':path.resolve(process.cwd(), './node_modules/md5/md5.js')
         },
-        extensions: ['.vue','.js','.css']
+        extensions: ['.vue','.js','.less','.css']
     },
     module:{
         rules: [

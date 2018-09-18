@@ -120,8 +120,6 @@ export default {
                 </tr>)
                 : ''
               ]
-            ).concat(
-              <fa-tooltip effect={ this.table.tooltipEffect } placement="top" ref="tooltip" content={ this.tooltipContent }></fa-tooltip>
             )
           }
         </tbody>

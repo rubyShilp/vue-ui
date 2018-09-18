@@ -12,18 +12,20 @@ export default {
         isVisible:false,
         radio:1,
         userName:'',
+        cityName:'',
         selectName:2,
         file:'',
         fileList:new Array(),
         dataMessage:[
           {name:'张三',sex:1,age:12,email:'465sdadfaddsfasffasdfasdfsafdsf525@qq.com'},
-          {name:'李四',sex:1,age:12,email:'465525@qq.com'},
-          {name:'王五',sex:1,age:12,email:'465525@qq.com'},
-          {name:'赵六',sex:0,age:12,email:'465525@qq.com'},
-          {name:'赵丽颖',sex:0,age:12,email:'465525@qq.com'},
-          {name:'林志玲',sex:0,age:12,email:'465525@qq.com'},
+          {name:'李四',sex:1,age:12,email:'425@qq.com'},
+          {name:'王五',sex:1,age:12,email:'45@qq.com'},
+          {name:'赵六',sex:0,age:12,email:'4655@qq.com'},
+          {name:'赵丽颖',sex:0,age:12,email:'4@qq.com'},
+          {name:'林志玲',sex:0,age:12,email:'46555@qq.com'},
           {name:'杨幂',sex:0,age:12,email:'465525@qq.com'}
         ],
+        optionList:'',
         formLabelAlign: {
           name: '',
           region: '',
@@ -299,6 +301,9 @@ export default {
     //树形菜单
     handleNodeClick(data) {
       console.log(data);
+    },
+    sizeChanage(size){
+      console.log(size);
     }
   }
 }

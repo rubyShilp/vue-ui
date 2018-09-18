@@ -1,6 +1,20 @@
 <template>
-<div style="display:inline-block">
-    <input type="text" ref='input' :value='value' @input="inputKeys()"  readonly @click="selectPciker()" placeholder="请选择省市区"/>
+<div class="fa-input" :style="{'width':width+'px'}" style="display:inline-block" :class="{'fa-input__focus':focus,'has-label':label}">
+    <div class="fa-input-label" :class="{'float':!focus && !model}">{{label}}</div>
+    <div class="fa-select fa-input-content fa-select-position" :class="{'is-open':!focus}">
+        <div class="fa-select-content">
+            <input tabindex="0"  class="fa-select-input" type="hidden"  v-model="model"/>
+            <input class="fa-select-input" @click="selectPciker()"   @focus.stop="focus = true;"  readonly
+            @blur="focus = false;" :placeholder="placeholder"  @change="handleChange" :disabled="disabled"  ref="values">
+        </div>
+        <div class="fa-select-action">
+            <svg viewBox="0 0 24 24" class="fa-select-icon"><path d="M7 10l5 5 5-5z"></path></svg>
+        </div>
+        <div>
+            <div class="fa-input-line"></div>
+            <div class="fa-input-focus-line " :class="{'focus':focus,'disabled':disabled}"></div>
+        </div>
+    </div>
     <div class="edit-box-list" style="top:auto;left:auto" v-if="showCityHide">
         <div class="tab-list">
             <a href="javascript:;" :class="{'cur':cityHiddent===1}" @click="cityHiddent=1">{{province}}</a>
@@ -54,6 +68,7 @@
       background:white;
     li{
       height:30px!important;
+      list-style: none;
       line-height:30px!important;
       width:80px!important;
       float:left;
@@ -97,6 +112,7 @@ export default {
     name:'faCityPickerData',
     data(){
         return{
+            focus: false,
             showCityHide:false,//是否显示选择省市区
             province:'请选择',//省份
             city:'请选择',//市 区
@@ -110,11 +126,17 @@ export default {
     beforeMount(){
         this.initCity();
     },
+    computed:{ 
+        model:{
+            get() {
+                return this.value;
+            },
+            set(val) {
+                this.$emit('input', val);
+            }
+        }
+    },
     props:{
-        value:{
-            type: String,
-            default: ""
-        },
         //是否显示省份信息
         provinceHide:{
             type:Boolean,
@@ -129,9 +151,31 @@ export default {
         countyHide:{
             type:Boolean,
             default:true
+        },
+        label:{
+            type:String,
+            default:''
+        },
+        width:{
+            type:Number,
+            default:270
+        },
+        disabled:{
+            type:Boolean,
+            default:false
+        },
+        placeholder:{
+            type:String,
+            default:'请选择省市区'
         }
     },
     methods:{
+         //文本值改变
+        handleChange() {
+            this.$nextTick(() => {
+                this.$emit('change', this.model);
+            });
+        },
         //初始化加载省,市，县城市数据
         initCity(){
             //判断是否显示省份信息
@@ -155,7 +199,7 @@ export default {
         },
         //显示省市区选择
         selectPciker(){
-            if(this.$refs.input.value===''){
+            if(this.model===''){
                 this.$emit('input','');
             }
             this.showCityHide=true;
@@ -163,10 +207,6 @@ export default {
             this.city='请选择';
             this.county='请选择';
             this.cityHiddent=1;
-        },
-        //获取文本输入的值
-        inputKeys(){
-             this.$emit('input',this.$refs.input.value);
         },
         //选择省份加载对应市级信息
         selectProvince(name,e){
@@ -211,13 +251,17 @@ export default {
         //显示判断当前省份，市区，县级城市等信息是否预览
         showHideCityPicker(){
             if(this.province==='请选择'){
-                this.$emit('input','');
+                this.model='';
+                this.$refs.values.value='';
             }else if(this.province!=='请选择' && this.city==='请选择' && this.county==='请选择'){
-                this.$emit('input',this.province);
+                this.model=this.province;
+                this.$refs.values.value=this.province;
             }else if(this.province!=='请选择' && this.city!=='请选择' && this.county==='请选择'){
-                this.$emit('input',this.province+'-'+this.city);
+                this.model=this.province+'-'+this.city;
+                this.$refs.values.value=this.province+'-'+this.city;
             }else{
-               this.$emit('input',this.province+'-'+this.city+'-'+this.county);
+               this.model=this.province+'-'+this.city+'-'+this.county;
+               this.$refs.values.value=this.province+'-'+this.city+'-'+this.county;
             }
         }
     },
