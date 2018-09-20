@@ -40,8 +40,14 @@ export default {
         placeholder:String,
         options:Array,
         showChecked:false,
-        className:'',
-        classCancel:'',
+        className:{
+            type:String,
+            default:'fa_regin_btn'
+        },
+        classCancel:{
+            type:String,
+            default:'fa_regin_btn_gray'
+        },
         checkRadio:{
             type:Boolean,
             default:false

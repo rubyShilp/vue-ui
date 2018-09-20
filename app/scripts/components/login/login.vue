@@ -2,7 +2,11 @@
   <div class="center">
     <img src="./../../../images/logo.png">
     <h1>hello VUE</h1>
-     <fa-button @click="clickAll(12)">点击</fa-button>
+      <fa-button type='primary' className='fa_regin_btn'  @click="clickAll(12)">主要按钮</fa-button>
+      <fa-button type='success' plain  @click="clickAll(12)">成功按钮</fa-button>
+      <fa-button type='info' plain @click="clickAll(12)">信息按钮</fa-button>
+      <fa-button type='warning' plain @click="clickAll(12)">警告按钮</fa-button>
+      <fa-button type='danger' plain @click="clickAll(12)">危险按钮</fa-button>
     <br/>
     <fa-date-picker label='开始时间' v-model="startDate" color='#fbb900'>
       <i class="fa-icon-date" slot="left"></i>
@@ -41,7 +45,7 @@
       </div>
   </fa-dialog>
   <br/>
-  <fa-cascader :options='options' v-model="optionList" :checkRadio='true' :showChecked='true'></fa-cascader>
+  <fa-cascader :options='options' v-model="optionList" className='fa_regin_btn'  :showChecked='true'></fa-cascader>
   {{optionList}}
   <br/>
   <fa-input type='text' v-model="userName" maxlength='500'>
@@ -76,7 +80,7 @@
             @downloadFile='downloadFile'
             :limit='4'
             :fileList='fileList'>
-    <fa-button><i class="fa-icon--left fa-icon-upload"></i>上传</fa-button>
+    <fa-button icon='fa-icon--left fa-icon-upload'>上传</fa-button>
   </fa-upload>
   <br/>
   <fa-progress :percentage='percentage'  :stroke-width='6' color='#67c23a'></fa-progress>

@@ -5,18 +5,18 @@
             <li v-for="(item,index) of options" :key="index" @click="selectOptions(index,item)">
                 <fa-checkbox v-if="!item.children && showChecked" v-model="item.checked">{{item.label}}</fa-checkbox><em v-if="item.children || !showChecked">{{item.label}}</em><i class="fa-icon-arrow-right" v-if="item.children"></i>
             </li>
-            <li style="border-top:1px solid #ccc;">
-                <button :class="className" @click="confirm()">确认</button>
-                <button :class="classCancel" @click="cancel()">取消</button>
+            <li>
+                <fa-button :className='className' @click="confirm()">确认</fa-button>
+                <fa-button :className='classCancel' @click="cancel()">取消</fa-button>
             </li>
         </ul>
         <ul class="fa-cascader-menu" style="position: relative;" v-if="checkRadio">
             <li v-for="(item,index) of options" :key="index">
                 <fa-radio v-if="!item.children && showChecked" v-model="radioChecked" :label="item.value">{{item.label}}</fa-radio><em v-if="item.children || !showChecked">{{item.label}}</em><i class="fa-icon-arrow-right" v-if="item.children"></i>
             </li>
-            <li style="border-top:1px solid #ccc;">
-                <button :class="className" @click="confirm()">确认</button>
-                <button :class="classCancel" @click="cancel()">取消</button>
+            <li>
+                <fa-button :className='className' @click="confirm()">确认</fa-button>
+                <fa-button :className='classCancel' @click="cancel()">取消</fa-button>
             </li>
         </ul>
         <!-- <fa-options :options='options[index].children' :showChecked='showChecked' v-if="index>=0 && options[index].children"></fa-options> -->
@@ -38,8 +38,14 @@ export default {
     props:{
         options:Array,
         showChecked:false,
-        className:'',
-        classCancel:'',
+        className:{
+            type:String,
+            default:'fa_regin_btn'
+        },
+        classCancel:{
+            type:String,
+            default:'fa_regin_btn_gray'
+        },
         checkRadio:{
             type:Boolean,
             default:false
@@ -80,8 +86,9 @@ export default {
                     if(!item.children){
                         this.$set(this.options,index,item);
                     }
+                    this.selectAll();
                 }
-                this.selectAll();
+               
             })
         },
         //确认选择

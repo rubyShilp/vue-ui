@@ -1,23 +1,94 @@
 <template>
-<button @click.stop='eventClick()' class="fa-button hover fa-raised-button fa-primary-color fa-inverse ">
-    <div class="fa-button-wrapper">
-        <div class="fa-ripple-wrapper"></div>
-        <slot></slot>
-    </div>
-</button>
+<a href="javaScript:;" :style='{"height":height+"px","line-height":height+"px","width":width+"px"}' @click.stop='eventClick()' :class="className">
+    <i :class="icon" v-if="left"></i>
+    <slot></slot>
+    <i :class="icon" v-if="right"></i>
+</a>
 </template>
 <script>
 export default {
     name: 'faButton',
     props:{
-        color:String,
         icon:String,
+        height:{
+            type:Number,
+            default:35
+        },
+        width:{
+            type:Number,
+            default:90
+        },
+        className:{
+            type:String,
+            default:''
+        },
+        left:{
+           type:Boolean,
+           default:true, 
+        },
+        right:{
+            type:Boolean,
+            default:false, 
+        },
+        type:{
+            type:String,
+            default:''
+        },
+        plain:{
+           type:Boolean,
+           default:false 
+        }
+    },
+    watch:{
+        left(){
+            this.left?this.right=false:this.right=true;
+        },
+        right(){
+            this.right?this.left=false:this.left=true;
+        },
+        type(){
+            this.buttonType();
+        },
+        plain(){
+            this.buttonType();
+        }
+    },
+    beforeMount () {
+      this.buttonType();  
     },
     methods: {
         //绑定点击事件
         eventClick(){
             this.$emit('click',{});
         },
+        buttonType(){
+            if(this.type==='primary'){
+                this.className='fa-button-primary';
+                if(this.plain){
+                    this.className+=' is-plain-primary';
+                }
+            }else if(this.type==='success'){
+                this.className='fa-button-success';
+                 if(this.plain){
+                    this.className+=' is-plain-success';
+                }
+            }else if(this.type==='info'){
+                this.className='fa-button-info';
+                if(this.plain){
+                    this.className+=' is-plain-info';
+                }
+            }else if(this.type==='warning'){
+                this.className='fa-button-warning';
+                if(this.plain){
+                    this.className+=' is-plain-warning';
+                }
+            }else if(this.type==='danger'){
+                this.className='fa-button-danger';
+                if(this.plain){
+                    this.className+=' is-plain-danger';
+                }
+            }
+        }
     }
 }
 </script>
