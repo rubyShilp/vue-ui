@@ -2,7 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const { VueLoaderPlugin } = require('vue-loader');
 const uglifyjsPlugin=require('uglifyjs-webpack-plugin');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const MiniCssExtractPlugin=require('mini-css-extract-plugin');
 module.exports={
     entry:{
         'main': ['./scripts/package/index.js'],
@@ -43,31 +43,14 @@ module.exports={
             },
             {
             test: /\.less$/,
-            use: ExtractTextPlugin.extract({
-                    fallback: 'style-loader',
-                    use: [
-                        {
-                            loader:'css-loader',
-                            options:{
-                                minimize: true //css压缩
-                            }
-                        },'less-loader'],
-                    allChunks: true
-                })
+            use:['style-loader','css-loader','less-loader']
             },
             {
                 test: /\.css$/,
-                use:ExtractTextPlugin.extract({
-                  fallback: "style-loader",
-                  use: [
-                    {
-                      loader: 'css-loader',
-                      options:{
-                          minimize: true //css压缩
-                      }
-                    }
-                  ]
-                })
+                use:[
+                        MiniCssExtractPlugin.loader,
+                        "css-loader"
+                    ]
             },
         ]
     },
@@ -88,6 +71,6 @@ module.exports={
         new VueLoaderPlugin(),
         new webpack.ProgressPlugin(),
         new webpack.HotModuleReplacementPlugin(),
-        new ExtractTextPlugin('main.css')
+        new MiniCssExtractPlugin("main.css"),
     ]
 }
