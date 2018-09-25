@@ -107,8 +107,35 @@ export default {
   },
   methods:{
     clickAll(val){
-      this.isVisible=true;
-      //this.$message('那么'+val)
+      //this.isVisible=true;
+      if(val==1){
+        this.$message({
+          message:'hello world',
+          type:'success'
+        })
+      }else if(val==2){
+        this.$message({
+          message:'hello world',
+          type:'info'
+        })
+      }else if(val==3){
+        this.$message({
+          message:'hello world',
+          type:'warning'
+        })
+      }else if(val==4){
+        this.$message({
+          message:'hello world',
+          type:'danger'
+        })
+      }else if(val==5){
+        this.$message({
+          message:'hello world',
+          type:'own'
+        })
+      }else{
+        this.$message('hello world');
+      }
     },
     handleSelectChange(row){
       console.log(row);

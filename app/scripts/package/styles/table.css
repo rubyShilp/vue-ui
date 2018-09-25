@@ -471,6 +471,11 @@
 	padding:0;
 	text-align:center
 }
+.cell a{
+	text-decoration: none;
+    outline: none;
+    color: #000000;
+}
 .fa-table__expand-icon {
 	position:relative;
 	cursor:pointer;

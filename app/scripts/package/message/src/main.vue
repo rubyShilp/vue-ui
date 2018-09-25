@@ -1,33 +1,10 @@
 <template>
 <div class="layerTips" v-if="visible">
     <slot>
-        <p class="layerTipsBox">{{message}}</p>
+        <p class="layerTipsBox" :class="className"><i :class="classIcon" style="padding-right: 10px;"></i>{{message}}</p>
     </slot>
 </div>
 </template>
-<style scoped>
-.layerTips{
-    position: fixed;
-	z-index: 999;
-	text-align: center;
-	width: 100%;
-    height: 100%;
-	top:0;
-	left: 0;
-    right:0;
-    padding-top: 10%;
-}
-.layerTipsBox{
-    display: inline-block;
-    padding:15px 20px;
-    background: rgba(0,0,0,0.7);
-    z-index: 999;
-    border-radius: 3px;
-    -webkit-border-radius: 3px;
-    color:white;
-    font-size: 12px;
-}
-</style>
 <script>
 export default {
     data(){
@@ -36,6 +13,9 @@ export default {
             visible:false,
             closed:false,
             timer:null,
+            type:'',
+            className:'',
+            classIcon:'',
         }
     },
     watch: {
@@ -50,11 +30,30 @@ export default {
             this.closed = true;
         },
         startTimer(){
+            this.messageSetUp();      
             setTimeout(()=>{
                 if (!this.closed) {
                     this.close();
                 }
             },2000)
+        },
+        //提示设置
+        messageSetUp(){
+            if(this.type==='success'){
+                this.className='fa_tips_box_success';
+                this.classIcon='fa-icon-success';
+            }else if(this.type==='info'){
+                this.className='fa_tips_box_info';
+                this.classIcon='fa-icon-info';
+            }else if(this.type==='warning'){
+                this.className='fa_tips_box_warning';
+                this.classIcon='fa-icon-warning';
+            }else if(this.type==='danger'){
+                this.className='fa_tips_box_danger';
+                this.classIcon='fa-icon-circle-close-outline';
+            }else if(this.type==='own'){
+                this.className='fa_tips_box_own'
+            }
         }
     },
     mounted(){

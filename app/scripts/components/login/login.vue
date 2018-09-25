@@ -2,12 +2,12 @@
   <div class="center">
     <img src="./../../../images/logo.png">
     <h1>hello VUE</h1>
-      <fa-button type='primary'>主要按钮</fa-button>
-      <fa-button type='success' plain  @click="clickAll(12)">成功按钮</fa-button>
-      <fa-button type='info' plain @click="clickAll(12)">信息按钮</fa-button>
-      <fa-button type='warning' plain @click="clickAll(12)">警告按钮</fa-button>
-      <fa-button type='danger' plain @click="clickAll(12)">危险按钮</fa-button>
-      <fa-button type='own' plain @click="clickAll(12)">主题按钮</fa-button>
+      <fa-button type='primary' @click="clickAll()">主要按钮</fa-button>
+      <fa-button type='success' plain  @click="clickAll(1)">成功按钮</fa-button>
+      <fa-button type='info' plain @click="clickAll(2)">信息按钮</fa-button>
+      <fa-button type='warning' plain @click="clickAll(3)">警告按钮</fa-button>
+      <fa-button type='danger' plain @click="clickAll(4)">危险按钮</fa-button>
+      <fa-button type='own' plain @click="clickAll(5)">主题按钮</fa-button>
     <br/>
     <fa-date-picker label='开始时间' v-model="startDate" color='#fbb900'>
       <i class="fa-icon-date" slot="right"></i>
@@ -55,16 +55,17 @@
   <br/>
   <fa-page :pageSizes='[10,20,30,40]' @sizeChanage='sizeChanage' :currentPageNo='1' :pagegroup='5' :totalCount='100' :pageSize='10'></fa-page>
   <br/>
-   <fa-dropdown trigger='click'>
-                    <i class="fa-icon-aggregate"></i>
-                    <fa-dropdown-menu slot="dropdown">
-                      <fa-dropdown-item>张三</fa-dropdown-item>
-                      <fa-dropdown-item>李四</fa-dropdown-item>
-                      <fa-dropdown-item>王五</fa-dropdown-item>
-                      <fa-dropdown-item>赵六</fa-dropdown-item>
-                      <fa-dropdown-item>赵丽颖</fa-dropdown-item>
-                    </fa-dropdown-menu>
-                  </fa-dropdown>
+  <fa-dropdown trigger='click'>
+    <i class="fa-icon-aggregate"></i>
+    <fa-dropdown-menu slot="dropdown">
+      <fa-dropdown-item>张三</fa-dropdown-item>
+      <fa-dropdown-item>李四</fa-dropdown-item>
+      <fa-dropdown-item>王五</fa-dropdown-item>
+      <fa-dropdown-item>赵六</fa-dropdown-item>
+      <fa-dropdown-item>赵丽颖</fa-dropdown-item>
+    </fa-dropdown-menu>
+  </fa-dropdown>
+  <br/>
   <fa-select v-model="selectName" width='150' label='案件状态'>
     <fa-option label='张三' value='1'></fa-option>
     <fa-option label='李四' value='2'></fa-option>
@@ -98,16 +99,18 @@
           <fa-table-column prop='email' label='邮箱' :show-overflow-tooltip='true'></fa-table-column> 
           <fa-table-column label='操作'>
             <template slot-scope="scope">
-                  <fa-dropdown trigger='click'>
-                    <i class="fa-icon-aggregate"></i>
-                    <fa-dropdown-menu slot="dropdown">
-                      <fa-dropdown-item>张三</fa-dropdown-item>
-                      <fa-dropdown-item>李四</fa-dropdown-item>
-                      <fa-dropdown-item>王五</fa-dropdown-item>
-                      <fa-dropdown-item>赵六</fa-dropdown-item>
-                      <fa-dropdown-item>赵丽颖</fa-dropdown-item>
-                    </fa-dropdown-menu>
-                  </fa-dropdown>
+              <a href="javaScript:;">添加</a>
+              <a href="javaScript:;">编辑</a>
+              <fa-dropdown trigger='click'>
+                <i class="fa-icon-aggregate"></i>
+                <fa-dropdown-menu slot="dropdown">
+                  <fa-dropdown-item>张三</fa-dropdown-item>
+                  <fa-dropdown-item>李四</fa-dropdown-item>
+                  <fa-dropdown-item>王五</fa-dropdown-item>
+                  <fa-dropdown-item>赵六</fa-dropdown-item>
+                  <fa-dropdown-item>赵丽颖</fa-dropdown-item>
+                </fa-dropdown-menu>
+              </fa-dropdown>
             </template>
           </fa-table-column>
       </fa-table>
