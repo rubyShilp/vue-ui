@@ -1,5 +1,6 @@
 .fa-button{
   margin-left: 12px;
+  position: relative;
   color: #000000;
   outline: none;
   width: 90px;
@@ -12,6 +13,8 @@
   text-decoration: none;
   text-align: center;
   display: inline-block;
+  overflow: hidden;
+  box-sizing: border-box;
   &:hover{
       color: #000000;
   }
@@ -61,6 +64,15 @@
     border-color: #f78989;
   }
 }
+.fa-button-own{
+  .fa-button;
+  background-color: #fdd435;
+  border: 1px solid #fdd435;
+  &:hover{
+    background-color:#fbb900;
+    border-color: #fbb900;
+  }
+}
 //朴素按钮
 .is-plain-primary{
   background: #ecf5ff;
@@ -81,4 +93,8 @@
 .is-plain-danger{
   background: #fef0f0;
   border-color: #fbc4c4;
+}
+.is-plain-own{
+  background: #FFFFCC;
+  border-color: #fdd435;
 }

@@ -6,7 +6,7 @@ export default {
   },
   data(){
     return {
-        startDate:new Date(),
+        startDate:'',
         percentage:30,//进度条百分比
         checked:true,
         isVisible:false,
@@ -25,7 +25,7 @@ export default {
           {name:'林志玲',sex:0,age:12,email:'46555@qq.com'},
           {name:'杨幂',sex:0,age:12,email:'465525@qq.com'}
         ],
-        optionList:'',
+        optionList: [ "王五/谁"] ,
         formLabelAlign: {
           name: '',
           region: '',
@@ -79,7 +79,20 @@ export default {
             value: 'jiaohu',
             label: '组件交互文档'
           }]
-        }],
+        },{
+          value: 'dda',
+          label: '王五',
+          children: [{
+            value: '1',
+            label: '谁'
+          }, {
+            value: '2',
+            label: '22'
+          }, {
+            value: '123',
+            label: 'dda2'
+          }]
+      }],
         defaultProps:{
           children: 'children',
           label: 'label'

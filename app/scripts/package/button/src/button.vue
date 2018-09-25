@@ -87,6 +87,11 @@ export default {
                 if(this.plain){
                     this.className+=' is-plain-danger';
                 }
+            }else if(this.type==='own'){
+                this.className='fa-button-own';
+                if(this.plain){
+                    this.className+=' is-plain-own';
+                }
             }
         }
     }

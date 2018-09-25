@@ -2,14 +2,15 @@
   <div class="center">
     <img src="./../../../images/logo.png">
     <h1>hello VUE</h1>
-      <fa-button type='primary' className='fa_regin_btn'  @click="clickAll(12)">主要按钮</fa-button>
+      <fa-button type='primary'>主要按钮</fa-button>
       <fa-button type='success' plain  @click="clickAll(12)">成功按钮</fa-button>
       <fa-button type='info' plain @click="clickAll(12)">信息按钮</fa-button>
       <fa-button type='warning' plain @click="clickAll(12)">警告按钮</fa-button>
       <fa-button type='danger' plain @click="clickAll(12)">危险按钮</fa-button>
+      <fa-button type='own' plain @click="clickAll(12)">主题按钮</fa-button>
     <br/>
     <fa-date-picker label='开始时间' v-model="startDate" color='#fbb900'>
-      <i class="fa-icon-date" slot="left"></i>
+      <i class="fa-icon-date" slot="right"></i>
     </fa-date-picker>
     <br/>
     <fa-checkbox v-model="checked">备选项</fa-checkbox>
@@ -20,7 +21,7 @@
     <fa-card shadow="always" style="width:480px">
       <div slot="header" class="clearfix">
         <span>卡片名称</span>
-        <button>操作</button>
+        <fa-button type='success'>操作</fa-button>
       </div>
       <div>
         1212
@@ -40,15 +41,15 @@
         </fa-form-item>
       </fa-form>
       <div slot="footer">
-          <fa-button @click="clickAll(12)">确认</fa-button>
-          <fa-button @click="clickAll(12)">取消</fa-button>
+          <fa-button type='own' @click="clickAll(12)">确认</fa-button>
+          <fa-button type='info' @click="clickAll(12)">取消</fa-button>
       </div>
   </fa-dialog>
   <br/>
-  <fa-cascader :options='options' v-model="optionList" className='fa_regin_btn'  :showChecked='true'></fa-cascader>
+  <fa-cascader :options='options' v-model="optionList" checkRadio  className='fa_regin_btn'  :showChecked='true'></fa-cascader>
   {{optionList}}
   <br/>
-  <fa-input type='text' v-model="userName" maxlength='500'>
+  <fa-input type='text' label='描述' v-model="userName" maxlength='500'>
     <i class="fa-icon-search" slot="right"></i>
   </fa-input>
   <br/>
@@ -80,7 +81,7 @@
             @downloadFile='downloadFile'
             :limit='4'
             :fileList='fileList'>
-    <fa-button icon='fa-icon--left fa-icon-upload'>上传</fa-button>
+    <fa-button type='own' plain icon='fa-icon--left fa-icon-upload'>上传</fa-button>
   </fa-upload>
   <br/>
   <fa-progress :percentage='percentage'  :stroke-width='6' color='#67c23a'></fa-progress>

@@ -12,7 +12,7 @@
         </ul>
         <ul class="fa-cascader-menu" style="position: relative;" v-if="checkRadio">
             <li v-for="(item,index) of options" :key="index">
-                <fa-radio v-if="!item.children && showChecked" v-model="radioChecked" :label="item.value">{{item.label}}</fa-radio><em v-if="item.children || !showChecked">{{item.label}}</em><i class="fa-icon-arrow-right" v-if="item.children"></i>
+                <fa-radio v-if="!item.children && showChecked" v-model="radioChecked" :label="item.label">{{item.label}}</fa-radio><em v-if="item.children || !showChecked">{{item.label}}</em><i class="fa-icon-arrow-right" v-if="item.children"></i>
             </li>
             <li>
                 <fa-button :className='className' @click="confirm()">确认</fa-button>
@@ -54,16 +54,27 @@ export default {
     beforeMount(){
         this.selectAll();
     },
+    watch:{
+        options(){
+           this.selectAll(); 
+        }
+    },
     methods:{
         //根据数据判断是否选中全选
         selectAll(){
+            let checked=false;
             for(let i=0;i<this.options.length;i++){
-                if(!this.options[i].checked){
-                    this.checked=false;
-                    break;
+                if(this.options[i].checked){
+                    this.$set(this,'radioChecked',this.options[i].label);
+                    checked=true;
                 }else{
-                    this.checked=true;
+                    checked=false;
                 }
+            }
+            if(checked){
+                this.checked=true;
+            }else{
+                this.checked=false;
             }
         },
         //选择菜单项
@@ -95,9 +106,12 @@ export default {
         confirm(){
             this.selectList=new Array();
             if(this.checkRadio){
-                 for(let i=0;i<this.options.length;i++){
-                    if(this.options[i].value===this.radioChecked){
+                for(let i=0;i<this.options.length;i++){
+                    if(this.options[i].label===this.radioChecked){
+                        this.options[i].checked=true;
                         this.selectList.push(this.options[i]);
+                    }else{
+                        this.options[i].checked=false;
                     }
                 }
             }else{

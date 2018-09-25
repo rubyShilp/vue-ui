@@ -145,7 +145,8 @@
 .fa-input.has-label .fa-input-label.float {
     -webkit-transform: translate3d(0,28px,0) scale(1);
     transform: translate3d(0,28px,0) scale(1);
-    color: rgba(0,0,0,.38)
+    color: rgba(0,0,0,.38);
+    font-size: 14px;
 }
 
 .fa-text-field-multiline {
@@ -214,7 +215,7 @@
 	font-variant: inherit;
 	font-weight: inherit;
 	font-stretch: inherit;
-	font-size: inherit;
+	font-size: 14px;
 	color: rgba(0,0,0,.87);
 	font-family: inherit;
 	position: relative;

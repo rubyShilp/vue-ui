@@ -4,7 +4,7 @@
     <div class="fa-select fa-input-content fa-select-position" :class="{'is-open':!focus}">
         <div class="fa-select-content">
             <input tabindex="0"  class="fa-select-input" type="hidden"  v-model="model"/>
-            <input class="fa-select-input" @focus.stop="focus = true;showOptions=true"  readonly
+            <input class="fa-select-input" @focus.stop="focus = true;showHideOptions()"  readonly
             @blur="focus = false;" :placeholder="placeholder"  :disabled="disabled"  ref="values">
         </div>
         <div class="fa-select-action">
@@ -55,10 +55,13 @@ export default {
     },
     data(){
         return{
+            menuLabel:'',//获取当前选择的首选项
             focus: false,
             showOptions:false,
             index:-1,//选择菜单项的下标，根据下标显示不同的菜单项
-            selectList:Array()
+            selectList:Array(),
+            menuLabels:[],
+            stepValues:[]
         }
     },
     computed:{ 
@@ -72,12 +75,19 @@ export default {
         }
     },
     beforeMount(){
-        this.optionsUpdate(this.options);
+        this.$nextTick(()=>{
+            this.$refs.values.value=this.model.join(';');
+        })
     },
     created(){
         this.$on('handleOptionClick', this.handleOptionSelect);
     },
     methods:{
+        //显示下拉菜单
+        showHideOptions(){
+            this.showOptions=true;
+            this.optionsUpdate(this.options);
+        },
         //变更数据,添加复选框
         optionsUpdate(data){
             for(let i=0;i<data.length;i++){
@@ -88,13 +98,34 @@ export default {
                 }
             }
             this.options=data;
+            if(this.model){
+                this.menuLabels=new Array();
+                this.stepValues=new Array();
+                for(let i=0;i<this.model.length;i++){
+                    this.menuLabels.push(this.model[i].split('/')[0]);
+                    this.stepValues.push(this.model[i].split('/')[1])
+                }
+                for(let j=0;j<this.options.length;j++){
+                    for(let k=0;k<this.menuLabels.length;k++){
+                        if(this.menuLabels[k]===this.options[j].label){
+                            for(let l=0;l<this.options[j].children.length;l++){
+                                for(let m=0;m<this.stepValues.length;m++){
+                                    if(this.stepValues[m]===this.options[j].children[l].label){
+                                        this.options[j].children[l].checked=true;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         },
         //选择菜单项
         selectOptions(index,item){
-            this.model='';
-            this.$refs.values.value='';
             this.index=-1;
             if(item.children){
+                this.showHideOptions();
+                this.menuLabel=item.label;
                 this.index=index;
             }else{
                 this.index=-1;
@@ -114,11 +145,11 @@ export default {
             let items=[];
             if(list.length>0){
                 for(let j=0;j<list.length;j++){
-                    items.push(list[j].label+'/'+list[j].label);
+                    items.push(this.menuLabel+'/'+list[j].label);
                 }
             }
             if(items.length>0){
-                this.model=list;
+                this.model=items;
                 this.$refs.values.value=items.join(';');
             }else{
                 this.model='';
