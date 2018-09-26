@@ -67,14 +67,26 @@ export default {
         //根据数据判断是否选中全选
         selectAll(){
             let checked=false;
-            for(let i=0;i<this.options.length;i++){
-                if(this.options[i].checked){
-                    checked=true;
-                }else{
-                    checked=false;
-                    break;
+            if(this.checkRadio){
+                for(let i=0;i<this.options.length;i++){
+                    if(this.options[i].checked){
+                        if(this.checkRadio){
+                            this.$set(this,'radioChecked',this.options[i].label);
+                        }
+                    }
+                }
+
+            }else{
+                for(let i=0;i<this.options.length;i++){
+                    if(this.options[i].checked){
+                        checked=true;
+                    }else{
+                        checked=false;
+                        break;
+                    }
                 }
             }
+            
             if(checked){
                 this.checked=true;
             }else{
@@ -100,7 +112,7 @@ export default {
                 }else{
                     if(!item.children){
                         if(this.checkRadio){
-                            this.$set(this,'radioChecked',this.options[i].label);
+                            this.$set(this,'radioChecked',item.label);
                         }
                         this.$set(this.options,index,item);
                     }

@@ -98,7 +98,7 @@ export default {
                 }
             }
             this.options=data;
-            if(this.model){
+            if(this.model && this.$refs.values.value!='全部'){
                 this.menuLabels=new Array();
                 this.stepValues=new Array();
                 for(let i=0;i<this.model.length;i++){
