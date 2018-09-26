@@ -16,10 +16,10 @@
         </div>
     </div>
     <div class="fa-cascader-option" :style="{'top':label?'58px':'38px'}" v-if="showOptions">
-        <ul class="fa-cascader-menu">
-            <li @click="selectAll()"><em>全部</em></li>
-            <li v-for="(item,index) of options" :key="index" @click="selectOptions(index,item)"><fa-checkbox v-if="!item.children && showChecked" v-model="item.checked">{{item.label}}</fa-checkbox><em v-if="item.children || !showChecked">{{item.label}}</em><i class="fa-icon-arrow-right" v-if="item.children"></i></li>
-        </ul>
+        <fa-scrollbar class="fa-cascader-menu">
+            <p @click="selectAll()"><em>全部</em></p>
+            <p v-for="(item,index) of options" :key="index" @click="selectOptions(index,item)"><fa-checkbox v-if="!item.children && showChecked" v-model="item.checked">{{item.label}}</fa-checkbox><em v-if="item.children || !showChecked">{{item.label}}</em><i class="fa-icon-arrow-right" v-if="item.children"></i></p>
+        </fa-scrollbar>
         <fa-options :options='options[index].children' :className='className' :checkRadio='checkRadio' :classCancel='classCancel' :showChecked='showChecked' v-if="index>=0 && options[index].children"></fa-options>
     </div>
 </div>

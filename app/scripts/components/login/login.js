@@ -78,6 +78,24 @@ export default {
           }, {
             value: 'jiaohu',
             label: '组件交互文档'
+          },{
+            value: 'jiaohu',
+            label: '组件交互文档'
+          },{
+            value: 'jiaohu',
+            label: '组件交互文档'
+          },{
+            value: 'jiaohu',
+            label: '组件交互文档'
+          },{
+            value: 'jiaohu',
+            label: '组件交互文档'
+          },{
+            value: 'jiaohu',
+            label: '组件交互文档'
+          },{
+            value: 'jiaohu',
+            label: '组件交互文档'
           }]
         },{
           value: 'dda',

@@ -1,24 +1,28 @@
 <template>
     <span>
-        <ul class="fa-cascader-menu" style="position: relative;" v-if="!checkRadio">
-            <li @click="selectOptions('all','')"><fa-checkbox v-model="checked">全部</fa-checkbox></li>
-            <li v-for="(item,index) of options" :key="index" @click="selectOptions(index,item)">
-                <fa-checkbox v-if="!item.children && showChecked" v-model="item.checked">{{item.label}}</fa-checkbox><em v-if="item.children || !showChecked">{{item.label}}</em><i class="fa-icon-arrow-right" v-if="item.children"></i>
-            </li>
-            <li>
-                <fa-button :className='className' @click="confirm()">确认</fa-button>
-                <fa-button :className='classCancel' @click="cancel()">取消</fa-button>
-            </li>
-        </ul>
-        <ul class="fa-cascader-menu" style="position: relative;" v-if="checkRadio">
-            <li v-for="(item,index) of options" :key="index">
-                <fa-radio v-if="!item.children && showChecked" v-model="radioChecked" :label="item.label">{{item.label}}</fa-radio><em v-if="item.children || !showChecked">{{item.label}}</em><i class="fa-icon-arrow-right" v-if="item.children"></i>
-            </li>
-            <li>
-                <fa-button :className='className' @click="confirm()">确认</fa-button>
-                <fa-button :className='classCancel' @click="cancel()">取消</fa-button>
-            </li>
-        </ul>
+        <div class="options_item" v-if="!checkRadio">
+            <fa-scrollbar class="fa-cascader-menu" style="position: relative;">
+                <p @click="selectOptions('all','')"><fa-checkbox v-model="checked">全部</fa-checkbox></p>
+                <p v-for="(item,index) of options" :key="index" @click="selectOptions(index,item)">
+                   <fa-checkbox v-if="!item.children && showChecked" v-model="item.checked">{{item.label}}</fa-checkbox><em v-if="item.children || !showChecked">{{item.label}}</em><i class="fa-icon-arrow-right" v-if="item.children"></i>
+                </p>
+            </fa-scrollbar>
+            <div class="options_btn">
+                <fa-button :className='className' width='60' @click="confirm()">确认</fa-button>
+                <fa-button :className='classCancel' width='60' @click="cancel()">取消</fa-button>
+            </div>
+        </div>  
+        <div class="options_item" v-if="checkRadio">
+            <fa-scrollbar class="fa-cascader-menu" style="position: relative;">
+                <p v-for="(item,index) of options" :key="index">
+                    <fa-radio v-if="!item.children && showChecked" v-model="radioChecked" :label="item.label">{{item.label}}</fa-radio><em v-if="item.children || !showChecked">{{item.label}}</em><i class="fa-icon-arrow-right" v-if="item.children"></i>
+                </p>
+            </fa-scrollbar>
+            <div class="options_btn">
+                <fa-button :className='className' width='60' @click="confirm()">确认</fa-button>
+                <fa-button :className='classCancel' width='60' @click="cancel()">取消</fa-button>
+            </div>
+        </div>
         <!-- <fa-options :options='options[index].children' :showChecked='showChecked' v-if="index>=0 && options[index].children"></fa-options> -->
     </span>
 </template>
@@ -65,10 +69,10 @@ export default {
             let checked=false;
             for(let i=0;i<this.options.length;i++){
                 if(this.options[i].checked){
-                    this.$set(this,'radioChecked',this.options[i].label);
                     checked=true;
                 }else{
                     checked=false;
+                    break;
                 }
             }
             if(checked){
@@ -95,6 +99,9 @@ export default {
                     }
                 }else{
                     if(!item.children){
+                        if(this.checkRadio){
+                            this.$set(this,'radioChecked',this.options[i].label);
+                        }
                         this.$set(this.options,index,item);
                     }
                     this.selectAll();

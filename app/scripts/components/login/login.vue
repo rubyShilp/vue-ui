@@ -20,7 +20,7 @@
     <br/>
     <fa-card shadow="always" style="width:480px">
       <div slot="header" class="clearfix">
-        <span>卡片名称</span>
+        <span><i class="fa-icon-arrow-down"></i>卡片名称</span>
         <fa-button type='success'>操作</fa-button>
       </div>
       <div>
