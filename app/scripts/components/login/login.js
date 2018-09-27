@@ -1,5 +1,6 @@
 import {mapState} from 'vuex';
 import loading from './../../util/components/loading.js';
+import {trees,dataMessage,businessModel} from './data.js';
 export default {
   components:{
     'fa-loading':loading
@@ -16,101 +17,15 @@ export default {
         selectName:2,
         file:'',
         fileList:new Array(),
-        dataMessage:[
-          {name:'张三',sex:1,age:12,email:'465sdadfaddsfasffasdfasdfsafdsf525@qq.com'},
-          {name:'李四',sex:1,age:12,email:'425@qq.com'},
-          {name:'王五',sex:1,age:12,email:'45@qq.com'},
-          {name:'赵六',sex:0,age:12,email:'4655@qq.com'},
-          {name:'赵丽颖',sex:0,age:12,email:'4@qq.com'},
-          {name:'林志玲',sex:0,age:12,email:'46555@qq.com'},
-          {name:'杨幂',sex:0,age:12,email:'465525@qq.com'}
-        ],
-        optionList: [ "王五/谁"] ,
+        dataMessage:dataMessage,
+        optionList: [ "3232/2"],
         formLabelAlign: {
           name: '',
           region: '',
           type: ''
         },
-        data: [{
-          label: '一级 1',
-          children: [{
-            label: '二级 1-1',
-            children: [{
-              label: '三级 1-1-1'
-            }]
-          }]
-        }, {
-          label: '一级 2',
-          children: [{
-            label: '二级 2-1',
-            children: [{
-              label: '三级 2-1-1'
-            }]
-          }, {
-            label: '二级 2-2',
-            children: [{
-              label: '三级 2-2-1'
-            }]
-          }]
-        }, {
-          label: '一级 3',
-          children: [{
-            label: '二级 3-1',
-            children: [{
-              label: '三级 3-1-1'
-            }]
-          }, {
-            label: '二级 3-2',
-            children: [{
-              label: '三级 3-2-1'
-            }]
-          }]
-        }],
-        options: [{
-          value: 'ziyuan',
-          label: '资源',
-          children: [{
-            value: 'axure',
-            label: 'Axure Components'
-          }, {
-            value: 'sketch',
-            label: 'Sketch Templates'
-          }, {
-            value: 'jiaohu',
-            label: '组件交互文档'
-          },{
-            value: 'jiaohu',
-            label: '组件交互文档'
-          },{
-            value: 'jiaohu',
-            label: '组件交互文档'
-          },{
-            value: 'jiaohu',
-            label: '组件交互文档'
-          },{
-            value: 'jiaohu',
-            label: '组件交互文档'
-          },{
-            value: 'jiaohu',
-            label: '组件交互文档'
-          },{
-            value: 'jiaohu',
-            label: '组件交互文档'
-          }]
-        },{
-          value: 'dda',
-          label: '王五',
-          children: [{
-            value: '1',
-            label: '谁'
-          }, {
-            value: '2',
-            label: '22'
-          }, {
-            value: '123',
-            label: 'dda2'
-          }]
-      }],
+        data: trees,
+        options: businessModel,
         defaultProps:{
           children: 'children',
           label: 'label'

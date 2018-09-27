@@ -56,6 +56,7 @@ export default {
     data(){
         return{
             menuLabel:'',//获取当前选择的首选项
+            menuValue:'',//获取当前首选项ID
             focus: false,
             showOptions:false,
             index:-1,//选择菜单项的下标，根据下标显示不同的菜单项
@@ -76,7 +77,8 @@ export default {
     },
     beforeMount(){
         this.$nextTick(()=>{
-            this.$refs.values.value=this.model.join(';');
+           this.optionsUpdate(this.options);
+           this.optionsMessage(this.options);
         })
     },
     created(){
@@ -87,6 +89,7 @@ export default {
         showHideOptions(){
             this.showOptions=true;
             this.optionsUpdate(this.options);
+            this.optionsMessage(this.options);
         },
         //变更数据,添加复选框
         optionsUpdate(data){
@@ -97,7 +100,11 @@ export default {
                     this.optionsUpdate(data[i].children);
                 }
             }
+        },
+        //数据处理
+        optionsMessage(data){
             this.options=data;
+            let modelValues=[];
             if(this.model && this.$refs.values.value!='全部'){
                 this.menuLabels=new Array();
                 this.stepValues=new Array();
@@ -107,17 +114,19 @@ export default {
                 }
                 for(let j=0;j<this.options.length;j++){
                     for(let k=0;k<this.menuLabels.length;k++){
-                        if(this.menuLabels[k]===this.options[j].label){
+                        if(this.menuLabels[k]===this.options[j].value){
                             for(let l=0;l<this.options[j].children.length;l++){
                                 for(let m=0;m<this.stepValues.length;m++){
-                                    if(this.stepValues[m]===this.options[j].children[l].label){
+                                    if(this.stepValues[m]===this.options[j].children[l].value){
                                         this.options[j].children[l].checked=true;
+                                        modelValues.push(this.options[j].label+'/'+this.options[j].children[l].label);
                                     }
                                 }
                             }
                         }
                     }
                 }
+                this.$refs.values.value=modelValues.join(';');
             }
         },
         //选择菜单项
@@ -126,6 +135,7 @@ export default {
             if(item.children){
                 this.showHideOptions();
                 this.menuLabel=item.label;
+                this.menuValue=item.value;
                 this.index=index;
             }else{
                 this.index=-1;
@@ -143,13 +153,15 @@ export default {
             this.showOptions=options.showOptions;
             let list=JSON.parse(options.list);
             let items=[];
+            let modelItems=[];
             if(list.length>0){
                 for(let j=0;j<list.length;j++){
                     items.push(this.menuLabel+'/'+list[j].label);
+                    modelItems.push(this.menuValue+'/'+list[j].value);
                 }
             }
             if(items.length>0){
-                this.model=items;
+                this.model=modelItems;
                 this.$refs.values.value=items.join(';');
             }else{
                 this.model='';

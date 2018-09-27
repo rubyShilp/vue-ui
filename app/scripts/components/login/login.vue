@@ -46,7 +46,7 @@
       </div>
   </fa-dialog>
   <br/>
-  <fa-cascader :options='options' v-model="optionList" checkRadio  className='fa_regin_btn'  :showChecked='true'></fa-cascader>
+  <fa-cascader :options='options' v-model="optionList"   className='fa_regin_btn'  :showChecked='true'></fa-cascader>
   {{optionList}}
   <br/>
   <fa-input type='text' label='描述' v-model="userName" maxlength='500'>

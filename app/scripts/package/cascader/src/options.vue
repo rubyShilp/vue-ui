@@ -2,12 +2,12 @@
     <span>
         <div class="options_item" v-if="!checkRadio">
             <fa-scrollbar class="fa-cascader-menu" style="position: relative;">
-                <p @click="selectOptions('all','')"><fa-checkbox v-model="checked">全部</fa-checkbox></p>
+                <p @click="selectOptions('all','')" v-if="options.length>0"><fa-checkbox v-model="checked">全部</fa-checkbox></p>
                 <p v-for="(item,index) of options" :key="index" @click="selectOptions(index,item)">
                    <fa-checkbox v-if="!item.children && showChecked" v-model="item.checked">{{item.label}}</fa-checkbox><em v-if="item.children || !showChecked">{{item.label}}</em><i class="fa-icon-arrow-right" v-if="item.children"></i>
                 </p>
             </fa-scrollbar>
-            <div class="options_btn">
+            <div class="options_btn" v-if="options.length>0">
                 <fa-button :className='className' width='60' @click="confirm()">确认</fa-button>
                 <fa-button :className='classCancel' width='60' @click="cancel()">取消</fa-button>
             </div>
@@ -18,7 +18,7 @@
                     <fa-radio v-if="!item.children && showChecked" v-model="radioChecked" :label="item.label">{{item.label}}</fa-radio><em v-if="item.children || !showChecked">{{item.label}}</em><i class="fa-icon-arrow-right" v-if="item.children"></i>
                 </p>
             </fa-scrollbar>
-            <div class="options_btn">
+            <div class="options_btn" v-if="options.length>0">
                 <fa-button :className='className' width='60' @click="confirm()">确认</fa-button>
                 <fa-button :className='classCancel' width='60' @click="cancel()">取消</fa-button>
             </div>
