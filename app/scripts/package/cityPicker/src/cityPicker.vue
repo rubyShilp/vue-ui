@@ -79,6 +79,7 @@
       border:0!important;
       a{
         color:#2a2a2a;
+        text-decoration: none;
         &:hover{
           color:#3896ff;
         }

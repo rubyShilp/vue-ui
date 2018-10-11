@@ -40,7 +40,7 @@ export default {
   },
   methods:{
     clickAll(val){
-      //this.isVisible=true;
+      this.isVisible=true;
       if(val==1){
         this.$message({
           message:'hello world',

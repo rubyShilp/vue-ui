@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const { VueLoaderPlugin } = require('vue-loader');
 const uglifyjsPlugin=require('uglifyjs-webpack-plugin');
+const MiniCssExtractPlugin=require('mini-css-extract-plugin');
 let ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports={
     entry:{
@@ -42,33 +43,20 @@ module.exports={
                 use: 'url-loader?limit=10000&name=images/[name].[ext]?[hash]'
             },
             {
-                test: /\.less$/,
-                use: ExtractTextPlugin.extract({
-                    fallback: 'style-loader',
-                    use: [
-                        {
-                            loader:'css-loader',
-                            options:{
-                                minimize: true //css压缩
-                            }
-                        },'less-loader'],
-                    allChunks: true
-                })
+                test:/\.less$/,
+                use:[
+                    MiniCssExtractPlugin.loader,
+                    "css-loader",
+                    "less-loader"
+                ]
             },
             {
                 test: /\.css$/,
-                use:ExtractTextPlugin.extract({
-                    fallback: "style-loader",
-                    use: [
-                    {
-                        loader: 'css-loader',
-                        options:{
-                            minimize: true //css压缩
-                        }
-                    }
-                    ]
-                })
-            },
+                use: [
+                  MiniCssExtractPlugin.loader,
+                  "css-loader"
+                ]
+            }
         ]
     },
     performance: {
@@ -88,6 +76,8 @@ module.exports={
         new VueLoaderPlugin(),
         new webpack.ProgressPlugin(),
         new webpack.HotModuleReplacementPlugin(),
-        new ExtractTextPlugin('main.css'),
+        new MiniCssExtractPlugin({
+            filename: "main.css",
+        }),
     ]
 }

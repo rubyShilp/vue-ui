@@ -144,7 +144,7 @@ export default {
         //全部
         selectAll(){
             this.showOptions=false;
-            this.model=this.options;
+            this.model='all';
             this.$refs.values.value='全部';
             this.index=-1;
         },
