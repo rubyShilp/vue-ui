@@ -3,7 +3,6 @@ const path = require('path');
 const { VueLoaderPlugin } = require('vue-loader');
 const uglifyjsPlugin=require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugin=require('mini-css-extract-plugin');
-let ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports={
     entry:{
         'main': ['./scripts/package/index.js'],

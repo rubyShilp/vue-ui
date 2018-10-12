@@ -30,6 +30,8 @@ import faDropdown from './dropdown/index.js';
 import faDropdownItem from './dropdownItem/index.js';
 import faDropdownMenu from './dropdownMenu/index.js';
 import faDialog from './dialog/index.js';
+import faTab from './tabs/index.js';
+import faTabPane from './tabPane/index.js';
 const components={
     faTag,
     faInput,
@@ -58,7 +60,9 @@ const components={
     faDropdown,
     faDropdownMenu,
     faDropdownItem,
-    faDialog
+    faDialog,
+    faTabPane,
+    faTab
 }
 const install = function(Vue, opts = {}) {
     for (const name in components) {
@@ -101,6 +105,8 @@ module.exports={
     faDropdown,
     faDropdownMenu,
     faDropdownItem,
-    faDialog
+    faDialog,
+    faTabPane,
+    faTab
 }
 module.exports.default = module.exports;
