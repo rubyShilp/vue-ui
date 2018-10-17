@@ -52,6 +52,7 @@ export default {
                     this.childrens[i].elm.style='display:none';
                 }
             }
+            this.$emit('selectClick',{value:this.labels[index]});
         }
     }
 }

@@ -115,11 +115,12 @@
       </fa-table-column>
   </fa-table>
   <fa-city-picker v-model="cityName"></fa-city-picker>
-  <fa-tab typeColor='yellow'>
+  <fa-tab @selectClick='selectClick' typeColor='yellow'>
     <fa-tab-pane label='我的行程'>我的行程</fa-tab-pane>
     <fa-tab-pane label='消息中心'>消息中心</fa-tab-pane>
     <fa-tab-pane label='角色管理'>角色管理</fa-tab-pane>
     <fa-tab-pane label='定时任务补偿'>定时任务补偿</fa-tab-pane>
+    <fa-tab-pane label='生死狙击'>生死狙击</fa-tab-pane>
   </fa-tab>
   <!--树形菜单-->
   <fa-tree :data="data" :props="defaultProps" accordion @node-click="handleNodeClick" style="width:200px"></fa-tree>

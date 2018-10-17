@@ -96,6 +96,9 @@ export default {
     },
     sizeChanage(size){
       console.log(size);
+    },
+    selectClick(value){
+      console.log(value);
     }
   }
 }
