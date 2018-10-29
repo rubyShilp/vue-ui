@@ -120,8 +120,8 @@
 }
 
 .fa-radio__input.is-checked .fa-radio__inner {
-	border-color: #409EFF;
-	background: #409EFF
+	border-color: #fdd435;
+	background: #fdd435
 }
 
 .fa-radio__input.is-checked .fa-radio__inner::after {
@@ -130,11 +130,11 @@
 }
 
 .fa-radio__input.is-checked+.fa-radio__label {
-	color: #409EFF
+	color: #000000
 }
 
 .fa-radio__input.is-focus .fa-radio__inner {
-	border-color: #409EFF
+	border-color: #fdd435
 }
 
 .fa-radio__inner {
@@ -149,7 +149,7 @@
 }
 
 .fa-radio__inner:hover {
-	border-color: #409EFF
+	border-color: #fdd435
 }
 
 .fa-radio__inner::after {

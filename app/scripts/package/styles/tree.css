@@ -31,11 +31,11 @@
 	outline:0
 }
 .fa-tree-node:focus>.fa-tree-node__content {
-	background-color:#f5f7fa
+	background-color:#fffbea
 }
 .fa-tree-node.is-drop-inner>.fa-tree-node__content .fa-tree-node__label {
 	background-color:#409EFF;
-	color:#fff
+	color:#666666
 }
 .fa-tree-node__content {
 	display:-webkit-box;
@@ -54,7 +54,7 @@
 	margin-right:8px
 }
 .fa-tree-node__content:hover {
-	background-color:#f5f7fa
+	background-color:#fffbea
 }
 .fa-tree.is-dragging .fa-tree-node__content {
 	cursor:move
@@ -85,11 +85,11 @@
 	cursor:default
 }
 .fa-tree-node__label {
-	font-size:14px
+	font-size:12px
 }
 .fa-tree-node__loading-icon {
 	margin-right:8px;
-	font-size:14px;
+	font-size:12px;
 	color:#c0c4cc
 }
 .fa-tree-node>.fa-tree-node__children {

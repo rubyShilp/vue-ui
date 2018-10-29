@@ -234,7 +234,7 @@
 	-webkit-transition:all .3s cubic-bezier(.645,.045,.355,1);
 	transition:all .3s cubic-bezier(.645,.045,.355,1);
 	padding:12px 20px;
-	font-size:14px;
+	font-size:12px;
 	border-radius:0
 }
 .fa-table,.fa-tag {
@@ -289,7 +289,7 @@
 }
 .fa-checkbox-button--medium .fa-checkbox-button__inner {
 	padding:10px 20px;
-	font-size:14px;
+	font-size:12px;
 	border-radius:0
 }
 .fa-checkbox-button--medium .fa-checkbox-button__inner.is-round {
@@ -446,7 +446,7 @@
 	flex:1;
 	width:100%;
 	max-width:100%;
-	font-size:14px;
+	font-size:12px;
 	color:#606266
 }
 .fa-table--mini,.fa-table--small,.fa-table__expand-icon {
@@ -527,7 +527,7 @@
 	background-color:#fff
 }
 .fa-table td,.fa-table th {
-	padding:12px 0;
+	padding:10px 0;
 	min-width:0;
 	-webkit-box-sizing:border-box;
 	box-sizing:border-box;
@@ -623,7 +623,7 @@
 	box-sizing:border-box;
 	white-space:normal;
 	word-break:break-all;
-	line-height:20px
+	line-height:21px
 }
 .fa-table .cell.fa-tooltip {
 	white-space:nowrap;
@@ -837,7 +837,7 @@
 	transition:background-color .25s ease
 }
 .fa-table--enable-row-hover .fa-table__body tr:hover>td {
-	background-color:#e7f2ff
+	background-color:#fffbea
 }
 .fa-table--fluid-height .fa-table__fixed,.fa-table--fluid-height .fa-table__fixed-right {
 	bottom:0;

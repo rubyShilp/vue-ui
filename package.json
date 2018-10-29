@@ -48,13 +48,14 @@
     "webpack-merge": "^4.1.2"
   },
   "devDependencies": {
-    "axios": "^0.16.2",
-    "marked": "^0.4.0",
     "async-validator": "^1.8.5",
+    "axios": "^0.16.2",
     "deepmerge": "^2.1.1",
-    "normalize-wheel": "^1.0.1",
-    "throttle-debounce": "^2.0.0",
+    "marked": "^0.4.0",
     "md5": "^2.2.1",
+    "normalize-wheel": "^1.0.1",
+    "sortablejs": "^1.7.0",
+    "throttle-debounce": "^2.0.0",
     "vue": "^2.5.16",
     "vue-router": "^2.7.0",
     "vuex": "^2.3.1"

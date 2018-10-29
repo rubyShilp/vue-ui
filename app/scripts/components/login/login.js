@@ -1,4 +1,5 @@
 import {mapState} from 'vuex';
+import Sortable from 'sortablejs';
 import loading from './../../util/components/loading.js';
 import {trees,dataMessage,businessModel} from './data.js';
 export default {
@@ -38,7 +39,21 @@ export default {
     //   this.$loading(false);
     // },2000)
   },
+  mounted() {
+    this.rowDrop();
+  },
   methods:{
+    //行拖拽
+    rowDrop() {
+      const tbody = document.querySelector('.fa-table__body-wrapper tbody')
+      const _this = this
+      Sortable.create(tbody, {
+        onEnd({ newIndex, oldIndex }) {
+          const currRow = _this.dataMessage.splice(oldIndex, 1)[0]
+          _this.dataMessage.splice(newIndex, 0, currRow)
+        }
+      })
+    },
     clickAll(val){
       this.isVisible=true;
       if(val==1){

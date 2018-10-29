@@ -276,6 +276,14 @@
 .fa-icon-mark:before { content: "\e763"; }
 .fa-icon-document-book:before { content: "\e764"; }
 .fa-icon-correct:before { content: "\e765"; }
+.fa-icon-department:before { content: "\e767"; }
+.fa-icon-people:before { content: "\e768"; }
+.fa-icon-role:before { content: "\e769"; }
+.fa-icon-exit:before { content: "\e770"; }
+.fa-icon-subordinate:before { content: "\e771"; }
+.fa-icon-add-people:before { content: "\e772"; }
+.fa-icon-lock:before { content: "\e773"; }
+.fa-icon-ring:before { content: "\e774"; }
 @-webkit-keyframes rotating {
 	0% {
 	-webkit-transform:rotateZ(0);

@@ -6,7 +6,7 @@
             <slot name="left"></slot>
             <input tabindex="0" :type='type' class="fa-text-field-input" :maxlength="maxlength" :placeholder="placeholder" v-model="model"
             @focus="focus = true" 
-            @blur="focus = false" @change="handleChange" :disabled="disabled">
+            @blur="focus = false" @change="handleChange" @click="handleClick" :disabled="disabled">
             <slot name="right"></slot>
             <div>
                 <div class="fa-input-line"></div>
@@ -65,6 +65,12 @@ export default {
       handleChange() {
         this.$nextTick(() => {
           this.$emit('change', this.model);
+        });
+      },
+      //点击文本框
+      handleClick(){
+        this.$nextTick(() => {
+          this.$emit('click', this.model);
         });
       }
     }

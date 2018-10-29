@@ -6,7 +6,6 @@
     display: inline-block;
     position: relative;
     color: rgba(0,0,0,.54);
-    margin-bottom: 16px;
     padding-bottom: 12px;
     padding-top: 4px;
 }
@@ -18,7 +17,7 @@
     color: inherit
 }
 .fa-input__focus {
-    color: #2196f3
+    color: #fdd435
 }
 .fa-text-field-input {
     -webkit-appearance: none;
