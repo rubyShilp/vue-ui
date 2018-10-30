@@ -31,8 +31,7 @@
 <style scoped>
 .fddv3-list-page {
     background: #fff;
-    margin: 30px 0;
-    padding-bottom: 30px;
+    margin: 10px 0;
 }
 .fddv3-list-page .page-size{
     border: 1px solid #ccc;
@@ -62,11 +61,15 @@
     box-sizing: border-box;
 }
 .fddv3-list-page .fddv3-page .fddv3-page-hover {
-    background: #3896ff;
+    background: #fdd435;
     border-radius: 2px;
-    color: #fff;
+    color: #2a2a2a;
 }
-
+.fddv3-list-page .fddv3-page .fddv3-page-hover:hover{
+    background: #fdd435;
+    border-radius: 2px;
+    color: #2a2a2a;
+}
 .fddv3-list-page .fddv3-page span {
     background: url(./images/common.png) no-repeat;
     width: 16px;
