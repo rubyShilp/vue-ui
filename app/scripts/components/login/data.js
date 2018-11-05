@@ -35,11 +35,39 @@ export let trees=[{
     }]
   }];
   export let dataMessage=[
-    {id:'1',name:'张三',sex:1,age:12,email:'465sdadfaddsfasffasdfasdfsafdsf525@qq.com'},
-    {id:'2',name:'李四',sex:1,age:12,email:'425@qq.com'},
-    {id:'3',name:'王五',sex:1,age:12,email:'45@qq.com'},
-    {id:'4',name:'赵六',sex:0,age:12,email:'4655@qq.com'},
-    {id:'5',name:'赵丽颖',sex:0,age:12,email:'4@qq.com'},
-    {id:'6',name:'林志玲',sex:0,age:12,email:'46555@qq.com'},
-    {id:'7',name:'杨幂',sex:0,age:12,email:'465525@qq.com'}
+    {id:'1',name:'张三',sex:1,age:12,email:'465sdadfaddsfasffasdfasdfsafdsf525@qq.com',children:[
+      {id:'1-1',name:'李四',sex:1,age:12,email:'425@qq.com'},
+      {id:'1-2',name:'王五',sex:1,age:12,email:'45@qq.com'},
+      {id:'1-3',name:'赵六',sex:0,age:12,email:'4655@qq.com'},
+    ]},
+    {id:'2',name:'李四',sex:1,age:12,email:'425@qq.com',children:[
+      {id:'2-1',name:'李四',sex:1,age:12,email:'425@qq.com'},
+      {id:'2-2',name:'王五',sex:1,age:12,email:'45@qq.com'},
+      {id:'2-3',name:'赵六',sex:0,age:12,email:'4655@qq.com'},
+    ]},
+    {id:'3',name:'王五',sex:1,age:12,email:'45@qq.com',children:[
+      {id:'3-1',name:'李四',sex:1,age:12,email:'425@qq.com'},
+      {id:'3-2',name:'王五',sex:1,age:12,email:'45@qq.com'},
+      {id:'3-3',name:'赵六',sex:0,age:12,email:'4655@qq.com'},
+    ]},
+    {id:'4',name:'赵六',sex:0,age:12,email:'4655@qq.com',children:[
+      {id:'4-1',name:'李四',sex:1,age:12,email:'425@qq.com'},
+      {id:'4-2',name:'王五',sex:1,age:12,email:'45@qq.com'},
+      {id:'4-3',name:'赵六',sex:0,age:12,email:'4655@qq.com'},
+    ]},
+    {id:'5',name:'赵丽颖',sex:0,age:12,email:'4@qq.com',children:[
+      {id:'5-1',name:'李四',sex:1,age:12,email:'425@qq.com'},
+      {id:'5-2',name:'王五',sex:1,age:12,email:'45@qq.com'},
+      {id:'5-3',name:'赵六',sex:0,age:12,email:'4655@qq.com'},
+    ]},
+    {id:'6',name:'林志玲',sex:0,age:12,email:'46555@qq.com',children:[
+      {id:'6-1',name:'李四',sex:1,age:12,email:'425@qq.com'},
+      {id:'6-2',name:'王五',sex:1,age:12,email:'45@qq.com'},
+      {id:'6-3',name:'赵六',sex:0,age:12,email:'4655@qq.com'},
+    ]},
+    {id:'7',name:'杨幂',sex:0,age:12,email:'465525@qq.com',children:[
+      {id:'7-1',name:'李四',sex:1,age:12,email:'425@qq.com'},
+      {id:'7-2',name:'王五',sex:1,age:12,email:'45@qq.com'},
+      {id:'7-3',name:'赵六',sex:0,age:12,email:'4655@qq.com'},
+    ]},
   ]

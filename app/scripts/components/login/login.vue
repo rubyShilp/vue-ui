@@ -87,7 +87,18 @@
   <br/>
   <fa-progress :percentage='percentage'  :stroke-width='6' color='#67c23a'></fa-progress>
   <br/>
-  <fa-table :data='dataMessage' row-key="id"  :header-cell-style="{background:'#f7f8fa'}" border tableCenter   @selection-change="handleSelectChange">
+  <fa-table :data='dataMessage' row-key="id" @expand-change='expandChage' :header-cell-style="{background:'#f7f8fa'}" border tableCenter   @selection-change="handleSelectChange">
+      <fa-table-column type='expand'>
+        <template slot-scope="scopes">
+            <fa-table :data='scopes.row.children'>
+              <fa-table-column type="selection" width="55"></fa-table-column>
+              <fa-table-column prop='name' label='姓名'></fa-table-column>
+              <fa-table-column prop='sex' label='性别'></fa-table-column>
+              <fa-table-column prop='age' label='年龄'></fa-table-column>
+              <fa-table-column prop='email' label='邮箱'></fa-table-column> 
+            </fa-table>
+        </template>
+      </fa-table-column>
       <fa-table-column type="selection" width="55"></fa-table-column>
       <fa-table-column prop='name' label='姓名'></fa-table-column>
       <fa-table-column prop='sex' label='性别'>

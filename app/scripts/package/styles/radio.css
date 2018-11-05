@@ -34,7 +34,7 @@
 }
 
 .fa-radio.is-bordered.is-checked {
-	border-color: #409EFF
+	border-color: #fdd435
 }
 
 .fa-radio.is-bordered.is-disabled {
@@ -182,8 +182,8 @@
 }
 
 .fa-radio:focus:not(.is-focus):not(:active) .fa-radio__inner {
-	-webkit-box-shadow: 0 0 2px 2px #409EFF;
-	box-shadow: 0 0 2px 2px #409EFF
+	-webkit-box-shadow: 0 0 2px 2px #fdd435;
+	box-shadow: 0 0 2px 2px #fdd435
 }
 
 .fa-radio__label {

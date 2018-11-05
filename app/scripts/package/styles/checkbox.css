@@ -252,8 +252,8 @@
 }
 .fa-checkbox-button.is-checked .fa-checkbox-button__inner {
 	color:#fff;
-	background-color:#409EFF;
-	border-color:#409EFF;
+	background-color:#fdd435;
+	border-color:#fdd435;
 	-webkit-box-shadow:-1px 0 0 0 #8cc5ff;
 	box-shadow:-1px 0 0 0 #8cc5ff
 }

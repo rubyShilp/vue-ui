@@ -40,18 +40,24 @@ export default {
     // },2000)
   },
   mounted() {
-    this.rowDrop();
+    //this.rowDrop();
   },
   methods:{
     //行拖拽
-    rowDrop() {
-      const tbody = document.querySelector('.fa-table__body-wrapper tbody')
-      const _this = this
-      Sortable.create(tbody, {
-        onEnd({ newIndex, oldIndex }) {
-          const currRow = _this.dataMessage.splice(oldIndex, 1)[0]
-          _this.dataMessage.splice(newIndex, 0, currRow)
-        }
+    rowDrop(data) {
+      const tbody = document.querySelector('.fa-table__expanded-cell tbody');
+      if(tbody){
+        Sortable.create(tbody, {
+          onEnd({ newIndex, oldIndex }) {
+            const currRow=data.splice(oldIndex, 1)[0];
+            data.splice(newIndex, 0, currRow)
+          }
+        })
+      }
+    },
+    expandChage(row){
+      this.$nextTick(()=>{
+        this.rowDrop(row.children)
       })
     },
     clickAll(val){
