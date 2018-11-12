@@ -52,6 +52,13 @@ export default {
             }
         }
     },
+    watch:{
+        model(){
+            if(!this.model){
+                this.$refs.values.value=this.model;
+            }
+        }
+    },
     beforeMount(){
         this.$on('handleOptionMessage',this.handleOptionMessage);
         this.$nextTick(()=>{

@@ -87,6 +87,10 @@
   <br/>
   <fa-progress :percentage='percentage'  :stroke-width='6' color='#67c23a'></fa-progress>
   <br/>
+  <fa-tag type='info' closable  @close='tagClose'>
+    0318f779b84b44b1bc86adfe323bee1b
+  </fa-tag>
+  <br/>
   <fa-table :data='dataMessage' row-key="id" @expand-change='expandChage' :header-cell-style="{background:'#f7f8fa'}" border tableCenter   @selection-change="handleSelectChange">
       <fa-table-column type='expand'>
         <template slot-scope="scopes">
