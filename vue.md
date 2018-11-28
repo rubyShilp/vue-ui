@@ -6,3 +6,5 @@ npm install
 修改webpack.dev.js 项目启动ip地址
 
 npm start
+
+http://www.inktse.com/
