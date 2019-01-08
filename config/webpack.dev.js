@@ -4,7 +4,7 @@ const commonConfig=require('./webpack.common');
 module.exports=webpackMerge(commonConfig,{
     output:{
         path: path.join(process.cwd(), 'dist'),
-        publicPath: 'http://192.168.30.93:8086/',    
+        publicPath: 'http://192.168.30.93:8085/',    
         filename: '[name].bundle[hash:7].js',
         chunkFilename: '[id].chunk[hash:7].js',
         libraryTarget: 'umd',
@@ -29,8 +29,8 @@ module.exports=webpackMerge(commonConfig,{
         },
         proxy:[
             {
-                context:['/user/'],
-                target:'http://172.17.177.148:8080/',
+                context:['/user'],
+                target:'http://172.17.177.60:8084/',
                 changeOrigin:true,
                 secure:false
             }

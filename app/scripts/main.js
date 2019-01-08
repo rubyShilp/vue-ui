@@ -2,13 +2,12 @@ import Vue from 'vue';
 import App from './components/app.vue';
 import store from './store/store';
 import router from './routers/router';
-import './filter/filter';
 import faUI from './package/index.js';
-//import faUI from './../../lib/index.js';
-//import './../../lib/main.css';
+import i18n from './util/locale/index.js';
 Vue.use(faUI);
 new Vue({
-    store,
+    i18n,
+    store: store,
     router: router,
     render: h => h(App)
 }).$mount("#app")

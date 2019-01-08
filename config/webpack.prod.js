@@ -3,6 +3,7 @@ let path = require('path');
 var webpackMerge = require('webpack-merge');
 var commonConfig = require('./webpack.common');
 var uglifyjsPlugin=require('uglifyjs-webpack-plugin');
+const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 module.exports = webpackMerge(commonConfig, {
     output:{
         path: path.join(process.cwd(), 'dist'),
@@ -19,7 +20,8 @@ module.exports = webpackMerge(commonConfig, {
                 uglifyOptions: {
                     compress: false
                 }
-            })
+            }),
+            new OptimizeCssAssetsPlugin()
         ]
     },
 });
