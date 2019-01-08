@@ -3,15 +3,16 @@ const path = require('path');
 const { VueLoaderPlugin } = require('vue-loader');
 const uglifyjsPlugin=require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugin=require('mini-css-extract-plugin');
+const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 module.exports={
     entry:{
-        'main': ['./scripts/package/index.js'],
+        'main': ['./scripts/package/index.js']
     },
     context: path.join(process.cwd(), 'app'),
     output: {
         path: path.join(__dirname, './lib'),
         filename: 'index.js',
-        library: 'sunny-ui',
+        library: 'fadada-ui',
         libraryTarget: 'umd',
         umdNamedDefine: true
     },
@@ -62,21 +63,22 @@ module.exports={
         hints: false
     },
     //压缩js
-    // optimization: {
-    //     minimizer: [
-    //         new uglifyjsPlugin({
-    //             uglifyOptions: {
-    //                 compress: false
-    //             }
-    //         })
-    //     ]
-    // },
+    optimization: {
+        minimizer: [
+            new uglifyjsPlugin({
+                uglifyOptions: {
+                    compress: false
+                }
+            }),
+            new OptimizeCssAssetsPlugin()
+        ]
+    },
     plugins:[
         new VueLoaderPlugin(),
         new webpack.ProgressPlugin(),
         new webpack.HotModuleReplacementPlugin(),
         new MiniCssExtractPlugin({
-            filename: "main.css",
+            filename: "main-yellow.css",
         }),
     ]
 }
