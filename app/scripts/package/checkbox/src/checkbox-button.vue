@@ -44,7 +44,7 @@
   </label>
 </template>
 <script>
-  import Emitter from './../../mixins/emitter';
+  import Emitter from './../../mixins/emitter.js';
 
   export default {
     name: 'faCheckboxButton',
@@ -52,10 +52,10 @@
     mixins: [Emitter],
 
     inject: {
-      elForm: {
+      faForm: {
         default: ''
       },
-      elFormItem: {
+      faFormItem: {
         default: ''
       }
     },
@@ -142,12 +142,12 @@
         };
       },
 
-      _elFormItemSize() {
+      _faFormItemSize() {
         return (this.elFormItem || {}).elFormItemSize;
       },
 
       size() {
-        return this._checkboxGroup.checkboxGroupSize || this._elFormItemSize || (this.$ELEMENT || {}).size;
+        return this._checkboxGroup.checkboxGroupSize || this._faFormItemSize || (this.$ELEMENT || {}).size;
       },
 
       isDisabled() {

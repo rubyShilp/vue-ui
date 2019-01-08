@@ -1,5 +1,5 @@
 <script>
-  import Emitter from './../../mixins/emitter';
+  import Emitter from './../../mixins/emitter.js';
 
   export default {
     name: 'faCheckboxGroup',
@@ -25,11 +25,11 @@
     },
 
     computed: {
-      _elFormItemSize() {
+      _faFormItemSize() {
         return (this.elFormItem || {}).elFormItemSize;
       },
       checkboxGroupSize() {
-        return this.size || this._elFormItemSize || (this.$ELEMENT || {}).size;
+        return this.size || this._faFormItemSize || (this.$ELEMENT || {}).size;
       }
     },
 

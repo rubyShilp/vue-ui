@@ -21,7 +21,7 @@
     <fa-card shadow="always" style="width:480px">
       <div slot="header" class="clearfix">
         <span><i class="fa-icon-arrow-down"></i>卡片名称</span>
-        <fa-button type='success'>操作</fa-button>
+        <fa-button type='success' disabled>操作</fa-button>
       </div>
       <div>
         1212
@@ -46,10 +46,10 @@
       </div>
   </fa-dialog>
   <br/>
-  <fa-cascader :options='options' v-model="optionList"   className='fa_regin_btn'  :showChecked='true'></fa-cascader>
+  <fa-cascader v-if="selectName==12" :options='businessModel' v-model="optionList"   className='fa_regin_btn'  :showChecked='true'></fa-cascader>
   {{optionList}}
   <br/>
-  <fa-input type='text' label='描述' v-model="userName" disabled maxlength='500'>
+  <fa-input type='text' label='描述' v-model="userName"  maxlength='500'>
     <i class="fa-icon-search" slot="right"></i>
   </fa-input>
   <br/>

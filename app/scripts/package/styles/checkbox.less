@@ -117,8 +117,8 @@
 	border-color:#c0c4cc
 }
 .fa-checkbox__input.is-checked .fa-checkbox__inner,.fa-checkbox__input.is-indeterminate .fa-checkbox__inner {
-	background-color:#fdd435;
-	border-color:#fdd435
+	background-color:@colour;
+	border-color:@colour
 }
 .fa-checkbox__input.is-disabled+span.fa-checkbox__label {
 	color:#c0c4cc;
@@ -129,10 +129,10 @@
 	transform:rotate(45deg) scaleY(1)
 }
 .fa-checkbox__input.is-checked+.fa-checkbox__label {
-	color:#000000
+	color:#000000 !important
 }
 .fa-checkbox__input.is-focus .fa-checkbox__inner {
-	border-color:#fdd435
+	border-color:@colour
 }
 .fa-checkbox__input.is-indeterminate .fa-checkbox__inner::before {
 	content:'';
@@ -164,7 +164,7 @@
 	transition:border-color .25s cubic-bezier(.71,-.46,.29,1.46),background-color .25s cubic-bezier(.71,-.46,.29,1.46)
 }
 .fa-checkbox__inner:hover {
-	border-color:#fdd435
+	border-color:@colour
 }
 .fa-checkbox__inner::after {
 	-webkit-box-sizing:content-box;
@@ -252,8 +252,8 @@
 }
 .fa-checkbox-button.is-checked .fa-checkbox-button__inner {
 	color:#fff;
-	background-color:#fdd435;
-	border-color:#fdd435;
+	background-color:@colour;
+	border-color:@colour;
 	-webkit-box-shadow:-1px 0 0 0 #8cc5ff;
 	box-shadow:-1px 0 0 0 #8cc5ff
 }

@@ -1,7 +1,7 @@
 <template>
 <div class="fa-input" :style="{'width':width+'px'}" :class="{'fa-input__focus':focus,'has-label':label}" v-if="type!=='textarea'">
     <div class="fa-input-label" :class="{'float':!focus && !model}">{{label}}</div>
-    <div class="fa-select fa-input-content fa-select-position" :class="{'is-open':!focus}">
+    <div class="fa-select fa-input-content fa-select-position fa-input-border" :class="{'is-open':!focus,'cur':focus}">
         <div class="fa-select-content">
             <input tabindex="0"  class="fa-select-input" type="hidden"  v-model="model"/>
             <input class="fa-select-input" @focus.stop="focus = true;showOptions=true"  readonly
@@ -10,10 +10,10 @@
         <div class="fa-select-action">
             <svg viewBox="0 0 24 24" class="fa-select-icon"><path d="M7 10l5 5 5-5z"></path></svg>
         </div>
-        <div>
+        <!-- <div>
             <div class="fa-input-line"></div>
             <div class="fa-input-focus-line " :class="{'focus':focus,'disabled':disabled}"></div>
-        </div>
+        </div> -->
     </div>
     <fa-scrollbar class="fa-select-option" :style="{'top':label?'58px':'38px'}" v-if="showOptions">
         <ul>

@@ -19,14 +19,14 @@ export default {
         file:'',
         fileList:new Array(),
         dataMessage:dataMessage,
-        optionList: [ "3232/2"],
+        optionList: [],
         formLabelAlign: {
           name: '',
           region: '',
           type: ''
         },
         data: trees,
-        options: businessModel,
+        businessModel:[],
         defaultProps:{
           children: 'children',
           label: 'label'
@@ -34,6 +34,8 @@ export default {
     }
   },
   beforeMount () {
+    sessionStorage.removeItem('TOKEN');
+    this.userLogin();
     // this.$loading(true);
     // setTimeout(()=>{
     //   this.$loading(false);
@@ -41,6 +43,13 @@ export default {
   },
   mounted() {
     //this.rowDrop();
+  },
+  watch: {
+    businessModel(){
+      if(this.businessModel.length>0){
+        this.getStepOptions();
+      }
+    }
   },
   methods:{
     //行拖拽
@@ -65,7 +74,9 @@ export default {
       console.log(row);
     },
     clickAll(val){
-      this.selectName='';
+      this.selectName='12';
+      let href=window.location.href;
+      console.log(href);
       // this.isVisible=true;
       // if(val==1){
       //   this.$message({
@@ -125,6 +136,50 @@ export default {
     },
     selectClick(value){
       console.log(value);
-    }
+    },
+    userLogin(){
+      //swaiwai@163.com qwer1234 348737315@qq.com
+      let params={account:'swaiwai@163.com',password:'qwer1234'};
+      this.$store.dispatch('loginModule/userLogin',params).then(res=>{
+        if(res.result==='success'){
+          sessionStorage.removeItem('TOKEN');
+          sessionStorage.removeItem('USER_INFO');
+          sessionStorage.setItem('TOKEN', res.data.token);
+          sessionStorage.setItem('USER_INFO',JSON.stringify(res.data));
+          this.userInfo=res.data;
+          this.getBusinessOptions();
+        }
+      })
+    },
+    getBusinessOptions(){
+      this.$store.dispatch('loginModule/businessModel').then(res=>{
+          if(res.result==='success'){
+              this.businessModel = res.data;
+              this.$nextTick(()=>{
+                for(let i = 0; i < this.businessModel.length; i++){
+                  this.businessModel[i].label = this.businessModel[i].modelName;
+                  this.businessModel[i].value = this.businessModel[i].id;
+                }
+              })
+          }
+      })
+    },
+    getStepOptions(){
+      for(let i=0;i<this.businessModel.length;i++){
+        let params = {businessModelNum:this.businessModel[i].id};
+        this.$store.dispatch('loginModule/businessModelSteps',params).then(res=>{
+            if(res.result==='success'){
+                if(res.data.length !=0){
+                  for(let i = 0; i < res.data.length;i++){
+                    res.data[i].value = res.data[i].id;
+                    res.data[i].label = res.data[i].stepName;
+                  }
+                  this.businessModel[i].children = res.data;
+                }
+            }
+        })
+      }
+        
+    },
   }
 }

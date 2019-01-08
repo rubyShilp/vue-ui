@@ -11,7 +11,7 @@
                     <div class="personal-signature-pic">
                         <ul class="scroll-list">
                             <li>
-                                <div class="usersign" draggable='true' @dragstart='dragstart($event)'>
+                                <div class="usersign" :draggable='true' v-fa-sign-drap='signimage'>
                                     <img :src="signimage">
                                 </div>
                             </li>
@@ -31,7 +31,7 @@
                 <div class="company-signature">
                     <div class="personal-signature-pic">
                         <h3>
-                            <div class="usersign">
+                            <div class="usersign" :draggable='true' v-fa-sign-drap='signDate'>
                                 <img :src='signDate'/>
                             </div>
                         </h3>
@@ -50,8 +50,8 @@
     <div class="fa_signature-center">
         <div class="wid-840">
             <fa-scrollbar class="signature-con" ref="scrollItems">
-                <div @drop='drop($event)' @dragover='allowDrop($event)' ref='scr'>
-                    <div v-for="(img,index) of imgSrcs" :key="img">
+                <div ref='scr' v-fa-sign-drop='signAdd'>
+                    <div v-for="(img,index) of imgSrcs" :key="img"  >
                         <div class="docItem" :style="{'background':'url('+img+') center 0 no-repeat'}">
                         </div>
                         <div class="pagebottom">
@@ -59,7 +59,7 @@
                             <div class="pright">页码：{{index+1}}/{{imgSrcs.length}}</div>
                         </div>
                     </div>
-                    <div class="sign-animate" v-fa-sign-drop='imgSrcs.length' v-for="(sign,index) of signImgs" :key='sign'>
+                    <div class="sign-animate" v-fa-sign-mouse='dropUpInfo' v-for="(sign,index) of signImgs" :key='sign'>
                         <div class="usersign">
                             <img :src="sign"/>
                         </div>
@@ -91,69 +91,4 @@
     overflow-x: hidden;
 }
 </style>
-
-<script>
-import {signImg,signDate} from './images.js';
-export default {
-    name:'faDocumentEdit',
-    componentName:'faDocumentEdit',
-    data(){
-        return{
-            imgSrcs:[
-                'http://qatest.fabigbig.com:8100/user/picContract/4faa18039eac4bd18bcd512975c4f90e_0?1537153857191?',
-                'http://qatest.fabigbig.com:8100/user/picContract/4faa18039eac4bd18bcd512975c4f90e_1?1537153857191?',
-                'http://qatest.fabigbig.com:8100/user/picContract/4faa18039eac4bd18bcd512975c4f90e_2?1537153857191?',
-                'http://qatest.fabigbig.com:8100/user/picContract/4faa18039eac4bd18bcd512975c4f90e_3?1537153857191?',
-            ],
-            signimage:signImg,
-            signDate:signDate,
-            signImgs:new Array(),
-            objE:null,
-            isDropHide:false,//是否有拖拽(左边)签章
-            rightImgIndex:0
-        }
-    },
-    mounted(){
-        this.$nextTick(()=>{
-            let scrollBar=document.getElementsByClassName('fa-scrollbar__wrap')[1]
-            scrollBar.addEventListener('scroll',(e)=>{
-                for(let i=0;i<this.imgSrcs.length;i++){
-                    if(scrollBar.scrollTop>=1132*(i+1)){
-                        this.rightImgIndex=i+1;
-                    }else if(scrollBar.scrollTop<1132){
-                        this.rightImgIndex=0;
-                        break;
-                    }
-                }
-            })
-        })
-    },
-    methods:{
-        dragstart(ev){
-            this.isDropHide=true;
-//             let dom = event.currentTarget;
-//             this.objE = document.createElement('div'); 
-//             let dragDom=dom.innerHTML;
-// 　　        this.objE.innerHTML = dragDom; 
-        },
-        drop(event){
-            event.preventDefault();
-            if(this.isDropHide){
-                this.signImgs.push(this.signimage);
-                this.isDropHide=false; 
-            }
-            // if(this.objE){
-            //     event.target.appendChild(this.objE.cloneNode(true));
-            //     this.objE=null;
-            // }
-        },
-        allowDrop(event){
-            event.preventDefault();
-        },
-        //删除签章
-        removeSign(index){
-            this.signImgs.splice(index,1);
-        }
-    }
-}
-</script>
+<script src='./documentEdit.js'></script>

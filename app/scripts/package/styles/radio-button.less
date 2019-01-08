@@ -33,7 +33,9 @@
 }
 
 .fa-radio-button__inner:hover {
-	color: #409EFF
+	color: #000;
+	background-color:#fbb900;
+    border-color: #fbb900;
 }
 
 .fa-radio-button__inner [class*=fa-icon-] {
@@ -53,11 +55,11 @@
 }
 
 .fa-radio-button__orig-radio:checked+.fa-radio-button__inner {
-	color: #fff;
-	background-color: #409EFF;
-	border-color: #409EFF;
-	-webkit-box-shadow: -1px 0 0 0 #409EFF;
-	box-shadow: -1px 0 0 0 #409EFF
+	color: #000;
+	background-color: @colour;
+	border-color: @colour;
+	-webkit-box-shadow: -1px 0 0 0 @colour;
+	box-shadow: -1px 0 0 0 @colour
 }
 
 .fa-radio-button__orig-radio:disabled+.fa-radio-button__inner {
@@ -120,6 +122,6 @@
 }
 
 .fa-radio-button:focus:not(.is-focus):not(:active) {
-	-webkit-box-shadow: 0 0 2px 2px #409EFF;
-	box-shadow: 0 0 2px 2px #409EFF
+	-webkit-box-shadow: 0 0 2px 2px #fdd435;
+	box-shadow: 0 0 2px 2px #fdd435
 }

@@ -42,11 +42,18 @@ export default {
             type: Boolean,
             default:true
         },
+        height:{
+            type:Number,
+            default:32
+        },
         label:'',
         type:'text',
         width:'',
         disabled:Boolean,
-        color:'#3896ff',
+        color:{
+            type:String,
+            default:'#fdd435'
+        },
     },
     computed:{ 
         model:{
@@ -70,8 +77,8 @@ export default {
             if(this.showDate){
                 this.showMonth = false;
                 this.showYear = false;
-                }
             }
+        }
     },
     beforeMount() {
         //根据当前日历是否显示时间分钟来判断formDate显示的方式

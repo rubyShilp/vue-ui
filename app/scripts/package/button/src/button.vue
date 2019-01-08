@@ -8,19 +8,20 @@
 <script>
 export default {
     name: 'faButton',
+    data(){
+        return {
+            className:""
+        }
+    },
     props:{
         icon:String,
         height:{
             type:Number,
-            default:35
+            default:32
         },
         width:{
             type:Number,
-            default:90
-        },
-        className:{
-            type:String,
-            default:''
+            default:80
         },
         left:{
            type:Boolean,
@@ -32,11 +33,15 @@ export default {
         },
         type:{
             type:String,
-            default:''
+            default:'own'
         },
         plain:{
            type:Boolean,
            default:false 
+        },
+        disabled:{
+            type:Boolean,
+            default:false
         }
     },
     watch:{
@@ -53,12 +58,15 @@ export default {
             this.buttonType();
         }
     },
-    beforeMount () {
+    mounted(){
       this.buttonType();  
     },
     methods: {
         //绑定点击事件
         eventClick(){
+            if(this.disabled){
+                return;
+            }
             this.$emit('click',{});
         },
         buttonType(){
@@ -92,6 +100,9 @@ export default {
                 if(this.plain){
                     this.className+=' is-plain-own';
                 }
+            }
+            if(this.disabled){
+                this.className='fa-button-disabled'
             }
         }
     }

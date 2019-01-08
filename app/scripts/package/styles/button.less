@@ -73,6 +73,19 @@
     border-color: #fbb900;
   }
 }
+.fa-button-disabled{
+    .fa-button;
+    background-color: #f9f9f9;
+    border: 1px solid #f9f9f9;
+    text-align: center;
+    cursor: pointer;
+    color: #ccc;
+    &:hover{
+      color: #ccc;
+    }
+    text-shadow: 0 1px 1px white;
+    cursor: not-allowed !important;
+}
 //朴素按钮
 .is-plain-primary{
   background: #ecf5ff;
@@ -96,5 +109,5 @@
 }
 .is-plain-own{
   background-color: #fff;
-  border-color: #fdd435;
+  border-color: #dcdfe6;
 }

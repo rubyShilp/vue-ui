@@ -1,8 +1,24 @@
 @charset "UTF-8";
+::-webkit-input-placeholder{
+    color:#a6a6a6;
+    font-size: 12px;
+}
+::-moz-placeholder{   /* Mozilla Firefox 19+ */
+    color:#a6a6a6;
+    font-size: 12px;
+}
+:-moz-placeholder{    /* Mozilla Firefox 4 to 18 */
+    color:#a6a6a6;
+    font-size: 12px;
+}
+:-ms-input-placeholder{  /* Internet Explorer 10-11 */ 
+    color:#a6a6a6;
+    font-size: 12px;
+}
 .fa-input {
     font-size: 16px;
     width: 270px;
-    min-height: 48px;
+    min-height: 34px;
     display: inline-block;
     position: relative;
     color: rgba(0,0,0,.54);
@@ -17,7 +33,7 @@
     color: inherit
 }
 .fa-input__focus {
-    color: #fdd435
+    color: @colour
 }
 .fa-text-field-input {
     -webkit-appearance: none;
@@ -45,7 +61,10 @@
     -webkit-box-flex: 1;
     -webkit-flex: 1;
     -ms-flex: 1;
-    flex: 1
+    flex: 1;
+    &:disabled{
+        cursor: not-allowed
+    }
 }
 .fa-text-field {
     display: -webkit-box;
@@ -222,7 +241,19 @@
 	-webkit-flex: 1;
 	-ms-flex: 1;
 	flex: 1;
-	cursor: inherit
+    cursor: inherit;
+    &:disabled{
+        cursor:not-allowed;
+    }
+}
+.fa-input-border{
+    border: 1px solid #e5e5e5;
+    &:hover{
+        border:1px solid @colour;
+    }
+}
+.cur{
+    border:1px solid @colour;
 }
 .fa-select-input.is-enable {
 	cursor: text

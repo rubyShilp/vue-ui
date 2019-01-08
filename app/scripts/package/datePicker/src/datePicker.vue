@@ -2,16 +2,16 @@
 <rili class="fddcase-form-rili">
     <div class="fa-input" :style="{'width':width+'px'}" :class="{'fa-input__focus':focus,'has-label':label}">
         <div class="fa-input-label" :class="{'float':!focus && !model}">{{label}}</div>
-        <div class="fa-text-field fa-input-content fa-select-position">
-            <slot name="left"></slot>
+        <div class="fa-text-field fa-input-content fa-select-position fa-input-border" :class="{'cur':focus}">
+            <div style="margin-left:3px" @click='togglePanel()'><slot name="left"></slot></div>
             <input tabindex="0" :type='type' class="fa-text-field-input"  :placeholder="placeholder" v-model="model"
             @focus="focus = true;togglePanel()" :readonly='readonly'
             @blur="focus = false" @change="handleChange" :disabled="disabled">
-            <slot name="right"></slot>
-            <div>
+            <div style="margin-right:3px" @click='togglePanel()'><slot name="right"></slot></div>
+            <!-- <div>
                 <div class="fa-input-line"></div>
                 <div class="fa-input-focus-line " :class="{'focus':focus,'disabled':disabled}"></div>
-            </div>
+            </div> -->
         </div>
     </div>
     <div class="fddcase-form-rili-pop" v-if="showDate">
@@ -116,7 +116,7 @@
 *{margin: 0; padding: 0}
 
 input[type=text], input[type=password], select, textarea {
-  @height:34px;
+  @height:32px;
   .radius();
   border: 1px solid #e5e5e5;
   padding: 0 6px;
@@ -140,7 +140,7 @@ input[type=text], input[type=password], select, textarea {
 }
 
 /* 颜色 */
-@green:#3896ff;
+@green:#fdd435;
 @green1:#e8f7f4;
 
 /* 文字颜色 */

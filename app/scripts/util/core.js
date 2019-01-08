@@ -5,7 +5,8 @@ import router from './../routers/router';
 export function post(url,params){
     return  axios.post(url,params,{
         headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'token':sessionStorage.getItem('TOKEN')
         }
     });
 }

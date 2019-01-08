@@ -33,7 +33,7 @@
 	height:40px
 }
 .fa-checkbox.is-bordered.is-checked {
-	border-color:#fdd435
+	border-color:@colour
 }
 .fa-checkbox.is-bordered.is-disabled {
 	border-color:#ebeef5;
@@ -124,8 +124,8 @@
 	border-color:#c0c4cc
 }
 .fa-checkbox__input.is-checked .fa-checkbox__inner,.fa-checkbox__input.is-indeterminate .fa-checkbox__inner {
-	background-color:#fdd435;
-	border-color:#fdd435
+	background-color:@colour;
+	border-color:@colour
 }
 .fa-checkbox__input.is-disabled+span.fa-checkbox__label {
 	color:#c0c4cc;
@@ -136,10 +136,10 @@
 	transform:rotate(45deg) scaleY(1)
 }
 .fa-checkbox__input.is-checked+.fa-checkbox__label {
-	color:#fdd435
+	color:@colour
 }
 .fa-checkbox__input.is-focus .fa-checkbox__inner {
-	border-color:#fdd435
+	border-color:@colour
 }
 .fa-checkbox__input.is-indeterminate .fa-checkbox__inner::before {
 	content:'';
@@ -171,7 +171,7 @@
 	transition:border-color .25s cubic-bezier(.71,-.46,.29,1.46),background-color .25s cubic-bezier(.71,-.46,.29,1.46)
 }
 .fa-checkbox__inner:hover {
-	border-color:#fdd435
+	border-color:@colour
 }
 .fa-checkbox__inner::after {
 	-webkit-box-sizing:content-box;
@@ -244,7 +244,7 @@
 	padding:12px 20px
 }
 .fa-checkbox-button__inner:hover {
-	color:#fdd435
+	color:@colour
 }
 .fa-checkbox-button__inner [class*=fa-icon-] {
 	line-height:.9
@@ -261,8 +261,8 @@
 }
 .fa-checkbox-button.is-checked .fa-checkbox-button__inner {
 	color:#fff;
-	background-color:#fdd435;
-	border-color:#fdd435;
+	background-color:@colour;
+	border-color:@colour;
 	-webkit-box-shadow:-1px 0 0 0 #8cc5ff;
 	box-shadow:-1px 0 0 0 #8cc5ff
 }
@@ -282,7 +282,7 @@
 	box-shadow:none!important
 }
 .fa-checkbox-button.is-focus .fa-checkbox-button__inner {
-	border-color:#fdd435
+	border-color:@colour
 }
 .fa-checkbox-button:last-child .fa-checkbox-button__inner {
 	border-radius:0 4px 4px 0
@@ -321,7 +321,7 @@
 	height:32px;
 	line-height:30px;
 	font-size:12px;
-	color:#fdd435;
+	color:@colour;
 	border-radius:4px;
 	box-sizing:border-box;
 	border:1px solid rgba(64,158,255,.2);
@@ -339,13 +339,13 @@
 	vertical-align:middle;
 	top:-1px;
 	right:-5px;
-	color:#fdd435
+	color:@colour
 }
 .fa-tag .fa-icon-close::before {
 	display:block
 }
 .fa-tag .fa-icon-close:hover {
-	background-color:#fdd435;
+	background-color:@colour;
 	color:#fff
 }
 .fa-tag--info,.fa-tag--info .fa-tag__close {
@@ -599,7 +599,7 @@
 	box-sizing:border-box
 }
 .fa-table th>.cell.highlight {
-	color:#fdd435
+	color:@colour
 }
 .fa-table th.required>div::before {
 	display:inline-block;
@@ -796,10 +796,10 @@
 	bottom:7px
 }
 .fa-table .ascending .sort-caret.ascending {
-	border-bottom-color:#fdd435
+	border-bottom-color:@colour
 }
 .fa-table .descending .sort-caret.descending {
-	border-top-color:#fdd435
+	border-top-color:@colour
 }
 .fa-table .hidden-columns {
 	visibility:hidden;
@@ -810,7 +810,7 @@
 	background:#FAFAFA
 }
 .fa-table--striped .fa-table__body tr.fa-table__row--striped.current-row td,.fa-table__body tr.current-row>td,.fa-table__body tr.hover-row.current-row>td,.fa-table__body tr.hover-row.fa-table__row--striped.current-row>td,.fa-table__body tr.hover-row.fa-table__row--striped>td,.fa-table__body tr.hover-row>td {
-	background-color:#ecf5ff
+	background-color:@tableBgColor
 }
 .fa-table__column-resize-proxy {
 	position:absolute;
@@ -837,7 +837,7 @@
 	transition:background-color .25s ease
 }
 .fa-table--enable-row-hover .fa-table__body tr:hover>td {
-	background-color:#fffbea
+	background-color:@tableBgColor
 }
 .fa-table--fluid-height .fa-table__fixed,.fa-table--fluid-height .fa-table__fixed-right {
 	bottom:0;

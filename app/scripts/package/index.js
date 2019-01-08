@@ -1,7 +1,8 @@
-import './styles/index.less';
 import './directives/core.js';
+import './styles/index.less';
 import Message from './message/index.js';
 import Loading from './loading/index.js';
+import locale from './locale/index.js';
 import faInput from './input/index.js';
 import faSelect from './select/index.js';
 import faCascader from './cascader/index.js';
@@ -32,6 +33,9 @@ import faDropdownMenu from './dropdownMenu/index.js';
 import faDialog from './dialog/index.js';
 import faTab from './tabs/index.js';
 import faTabPane from './tabPane/index.js';
+import faTips from './tips/index.js';
+import faRow from './layout/index.js';
+import faCol from './layoutCol/index.js';
 const components={
     faTag,
     faInput,
@@ -62,9 +66,14 @@ const components={
     faDropdownItem,
     faDialog,
     faTabPane,
-    faTab
+    faTab,
+    faTips,
+    faRow,
+    faCol
 }
 const install = function(Vue, opts = {}) {
+    locale.use(opts.locale);
+    locale.i18n(opts.i18n);
     for (const name in components) {
         Vue.component(name, components[name])
     }
@@ -77,6 +86,8 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 module.exports={
     version:'1.0.1',
+    locale: locale.use,
+    i18n: locale.i18n,
     install,
     faInput,
     faSelect,
@@ -107,6 +118,9 @@ module.exports={
     faDropdownItem,
     faDialog,
     faTabPane,
-    faTab
+    faTab,
+    faTips,
+    faRow,
+    faCol
 }
 module.exports.default = module.exports;

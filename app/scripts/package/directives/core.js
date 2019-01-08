@@ -1,4 +1,15 @@
 import Vue from 'vue';
+//
+Vue.directive('fa-client',{
+    bind:function(el, binding, vnode){
+        el.onmousemove=(e)=>{
+           binding.value({width:el.offsetWidth-12,height:el.offsetHeight-3})
+        },
+        el.onmouseup=(e)=>{
+            binding.value({width:0,height:0})
+        }
+    },
+})
 /**
  * 拖放上传文件
  * v-fa-file-drop='{set:this,name:"file"}'
@@ -35,26 +46,55 @@ Vue.directive('fa-file',{
         el.value='';
     }
 })
-//签章拖动
+let sign='';
+//签章盖章
+Vue.directive('fa-sign-drap',{
+    bind:(el,binding,vnode)=>{
+        el.ondragstart=(e)=>{
+            sign=binding.value;
+        }
+    }
+})
 Vue.directive('fa-sign-drop',{
+    bind:(el,binding,vnode)=>{
+        el.ondragover=(e)=>{
+            e.preventDefault();
+            document.ondrop=(e)=>{
+                e.preventDefault();
+                let left=0;
+                e.offsetX>=618?left=618:left=e.offsetX;
+                let dropUpInfo={x:left,y:e.offsetY,sign:sign};
+                binding.value(dropUpInfo)
+            }
+        }
+    }
+})
+//签章拖动
+Vue.directive('fa-sign-mouse',{
     bind:(el, binding, vnode)=>{
-        Vue.nextTick(()=>{
-            let x=0,y=0,dragFlag=false;
-            el.onmousedown = (e)=>{
-                x = e.clientX - el.offsetLeft;
-                y = e.clientY - el.offsetTop;
-                dragFlag = true;
-            },
-            el.onmousemove=(e)=>{
+        el.style.left=(binding.value.x- 114)<0?0:(binding.value.x- 114)+'px';
+        el.style.top=(binding.value.y-61)<10?10:(binding.value.y-61)+'px';
+        let x=0,y=0,dragFlag=false;
+        el.onmousedown = (e)=>{
+            e.preventDefault();
+            x = e.clientX - el.offsetLeft;
+            y = e.clientY - el.offsetTop;
+            dragFlag = true;
+            document.onmousemove=(e)=>{
+                //e.preventDefault();
                 if(dragFlag){
-                    el.style.left = e.clientX - x +'px';
-                    el.style.top = e.clientY - y +'px';
+                    if((e.clientX - x)>=0 && (e.clientX - x)<=618){
+                        el.style.left = e.clientX - x +'px';
+                    }
+                    if((e.clientY - y)>=12){
+                        el.style.top = e.clientY - y +'px';
+                    }
                 }
             }
-            el.onmouseup=(e)=>{
+            document.onmouseup=(e)=>{
+                e.preventDefault();
                 dragFlag=false;
             }
-        })
-        
+        }
     }
 })
